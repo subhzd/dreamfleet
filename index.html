@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hypercar & Supercar Legends | Timeline</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Racing+Sans+One&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { 
+                        sans: ['Inter', 'sans-serif'],
+                        racing: ['Racing Sans One', 'cursive']
+                    },
+                    colors: {
+                        ferrari: {
+                            red: '#ff2800',
+                            dark: '#990000',
+                        },
+                        lambo: {
+                            yellow: '#ffb900',
+                            orange: '#ff7518',
+                        },
+                        pagani: {
+                            silver: '#a3a3a3',
+                            blue: '#4b6cb7',
+                        },
+                        bugatti: {
+                            blue: '#00b0f0',
+                            dark: '#0057b7',
+                        },
+                        koenigsegg: {
+                            ghost: '#d1d5db',
+                            yellow: '#fbbf24'
+                        },
+                        glass: {
+                            light: 'rgba(255, 255, 255, 0.8)',
+                            dark: 'rgba(20, 20, 20, 0.7)',
+                        }
+                    },
+                    animation: {
+                        'rumble': 'rumble 0.2s cubic-bezier(.36,.07,.19,.97) infinite',
+                        'rev': 'rumble 0.1s cubic-bezier(.36,.07,.19,.97) infinite',
+                        'dash': 'dash 1.5s ease-out forwards',
+                    },
+                    keyframes: {
+                        rumble: {
+                            '0%': { transform: 'translate(0, 0)' },
+                            '25%': { transform: 'translate(1px, 1px)' },
+                            '50%': { transform: 'translate(-1px, -1px)' },
+                            '75%': { transform: 'translate(-1px, 1px)' },
+                            '100%': { transform: 'translate(1px, -1px)' }
+                        },
+                        dash: {
+                            '0%': { strokeDashoffset: '100' },
+                            '100%': { strokeDashoffset: 'var(--target-offset)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Base Transitions */
+        body { transition: background-color 0.5s ease, color 0.5s ease; }
+
+        /* Liquid Background Orbs */
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(100px);
+            z-index: -1;
+            animation: float 20s infinite ease-in-out alternate;
+            opacity: 0.4;
+        }
+        .orb-1 { top: -10%; left: -10%; width: 50vw; height: 50vw; background: #333; animation-delay: 0s; }
+        .orb-2 { bottom: -10%; right: -10%; width: 50vw; height: 50vw; background: #111; animation-delay: -5s; }
+        
+        .dark .orb-1 { background: #4a0404; opacity: 0.3; } 
+        .dark .orb-2 { background: #222; opacity: 0.5; }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0, 0) scale(1); }
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.3); }
+
+        /* Liquid Glass Card System */
+        .glass {
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.7);
+        }
+        
+        .dark .glass {
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(18, 18, 18, 0.6);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Brand Specific Liquid Variations */
+        /* Light Mode - Distinct Borders and Tints */
+        .glass-ferrari {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 240, 240, 0.95));
+            border-left: 4px solid #ff2800;
+            box-shadow: 0 4px 15px rgba(255, 40, 0, 0.1);
+        }
+        .glass-lamborghini {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 250, 230, 0.95));
+            border-left: 4px solid #ffb900;
+            box-shadow: 0 4px 15px rgba(255, 185, 0, 0.1);
+        }
+        .glass-pagani {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 245, 255, 0.95));
+            border-left: 4px solid #4b6cb7;
+            box-shadow: 0 4px 15px rgba(75, 108, 183, 0.1);
+        }
+        .glass-bugatti {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(230, 245, 255, 0.95));
+            border-left: 4px solid #00b0f0;
+            box-shadow: 0 4px 15px rgba(0, 176, 240, 0.1);
+        }
+        .glass-koenigsegg {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 240, 240, 0.95));
+            border-left: 4px solid #9ca3af;
+            box-shadow: 0 4px 15px rgba(156, 163, 175, 0.1);
+        }
+
+        /* Dark Mode Overrides */
+        .dark .glass-ferrari {
+            background: linear-gradient(145deg, rgba(40, 10, 10, 0.7), rgba(20, 20, 20, 0.8));
+            border-left: 4px solid #ff2800;
+            box-shadow: 0 8px 32px 0 rgba(255, 40, 0, 0.1);
+        }
+        .dark .glass-lamborghini {
+            background: linear-gradient(145deg, rgba(40, 30, 10, 0.7), rgba(20, 20, 20, 0.8));
+            border-left: 4px solid #ffb900;
+            box-shadow: 0 8px 32px 0 rgba(255, 185, 0, 0.1);
+        }
+        .dark .glass-pagani {
+            background: linear-gradient(145deg, rgba(10, 20, 40, 0.7), rgba(20, 20, 20, 0.8));
+            border-left: 4px solid #4b6cb7;
+            box-shadow: 0 8px 32px 0 rgba(75, 108, 183, 0.15);
+        }
+        .dark .glass-bugatti {
+            background: linear-gradient(145deg, rgba(0, 20, 40, 0.7), rgba(20, 20, 20, 0.8));
+            border-left: 4px solid #00b0f0;
+            box-shadow: 0 8px 32px 0 rgba(0, 176, 240, 0.15);
+        }
+        .dark .glass-koenigsegg {
+            background: linear-gradient(145deg, rgba(30, 30, 30, 0.7), rgba(20, 20, 20, 0.8));
+            border-left: 4px solid #fbbf24;
+            box-shadow: 0 8px 32px 0 rgba(251, 191, 36, 0.15);
+        }
+        
+        .card-hover { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .card-hover:hover {
+            transform: translateY(-4px) scale(1.02);
+            z-index: 10;
+        }
+        .dark .card-hover:hover {
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        /* Start Engine Button Pulse */
+        .btn-start:active { transform: scale(0.90); }
+        .btn-start.running {
+            color: #ef4444; /* red-500 */
+            border-color: #ef4444;
+            background: rgba(239, 68, 68, 0.1);
+            animation: pulse-red 1s infinite;
+        }
+        .btn-start.revving {
+            background: #ef4444;
+            color: white;
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(239, 68, 68, 0.6);
+        }
+
+        @keyframes pulse-red {
+            0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4); }
+            70% { box-shadow: 0 0 0 6px rgba(239, 68, 68, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+        }
+
+        /* Segmented Control */
+        .segmented-control {
+            background: rgba(0, 0, 0, 0.05);
+            padding: 4px; 
+            border-radius: 8px;
+            display: inline-flex;
+            position: relative;
+            align-items: center;
+            box-sizing: border-box;
+            height: 3rem; 
+        }
+        .dark .segmented-control { background: rgba(255, 255, 255, 0.05); }
+
+        .segment-btn {
+            padding: 0 16px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: #666;
+            z-index: 1;
+            position: relative;
+            font-family: 'Inter', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            white-space: nowrap;
+        }
+        .dark .segment-btn { color: #888; }
+        
+        .segment-btn.active {
+            color: #fff;
+            background: #333; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        /* Styled Select Dropdown */
+        .glass-select {
+            appearance: none;
+            background-color: transparent;
+            border: none;
+            padding: 0 32px 0 16px;
+            height: 100%;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            color: #444;
+            cursor: pointer;
+            outline: none;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+            background-position: right 0.5rem center;
+            background-repeat: no-repeat;
+            background-size: 1.5em 1.5em;
+        }
+        .dark .glass-select { 
+            color: #ccc;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%239ca3af' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+        }
+        .glass-select option {
+            background-color: #f3f4f6;
+            color: #1f2937;
+        }
+        .dark .glass-select option {
+            background-color: #1f1f1f;
+            color: #f3f4f6;
+        }
+
+        /* Timeline Styles */
+        .timeline-bar {
+            height: 12px;
+            border-radius: 4px;
+            position: relative;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        .timeline-bar:hover { height: 18px; z-index: 10; cursor: help; filter: brightness(1.2); }
+        
+        .timeline-marker {
+            position: absolute;
+            top: -26px;
+            font-size: 0.7rem;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.2s;
+            pointer-events: none;
+            padding: 2px 6px;
+            border-radius: 4px;
+            background: #333;
+            color: #fff;
+            font-weight: bold;
+        }
+        .timeline-bar:hover .timeline-marker { opacity: 1; }
+
+        /* Lifecycle Bar */
+        .lifecycle-bg {
+            background: rgba(0,0,0,0.1);
+            border-radius: 999px;
+            height: 4px;
+            width: 100%;
+            overflow: hidden;
+        }
+        .dark .lifecycle-bg { background: rgba(255,255,255,0.1); }
+        .lifecycle-fill { height: 100%; border-radius: 999px; transition: width 0.5s ease; }
+
+        /* Status Badges */
+        .badge { display: inline-flex; align-items: center; padding: 2px 8px; border-radius: 4px; font-size: 0.65rem; font-weight: 700; border: 1px solid; text-transform: uppercase; letter-spacing: 0.05em; }
+        .status-active { color: #fff; border-color: #10b981; background: #10b981; }
+        .status-legacy { color: #fff; border-color: #ef4444; background: rgba(239, 68, 68, 0.8); }
+
+        /* Circular Progress */
+        .circular-chart { display: block; margin: 0 auto; max-width: 100%; max-height: 250px; }
+        .circle-bg { fill: none; stroke: rgba(128,128,128,0.2); stroke-width: 3.8; }
+        .circle { fill: none; stroke-width: 2.8; stroke-linecap: round; transition: stroke-dasharray 1s ease-out; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col bg-gray-100 dark:bg-[#050505] text-slate-900 dark:text-[#f0f0f0] relative overflow-x-hidden selection:bg-red-600 selection:text-white">
+
+    <!-- Ambient Background -->
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <!-- Navbar -->
+    <nav class="glass sticky top-0 z-50 border-b border-white/20 dark:border-white/5 backdrop-blur-xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <div class="flex items-center gap-4">
+                    <!-- User Requested Icon (fc.png) -->
+                    <img src="fc.png" 
+                         alt="Supercar Logo" 
+                         class="w-12 h-12 object-contain filter drop-shadow-[0_0_8px_rgba(255,255,255,0.2)]"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                    
+                    <!-- Fallback Icon if image fails -->
+                    <div class="w-10 h-12 bg-gradient-to-br from-red-600 to-black rounded hidden items-center justify-center shadow-lg border border-white/10">
+                        <i class="fa-solid fa-gauge-high text-white text-2xl"></i>
+                    </div>
+
+                    <div>
+                        <span class="font-racing text-2xl tracking-wide block leading-none text-black dark:text-white">LEGENDS</span>
+                        <span class="text-[10px] font-bold tracking-[0.3em] uppercase text-red-600 block">Hypercar & Supercar</span>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-6">
+                    <!-- Brand Switcher (Desktop) -->
+                    <div class="hidden md:flex segmented-control glass h-10">
+                        <button onclick="filterBrand('all')" class="segment-btn active brand-btn" data-brand="all">All Legends</button>
+                        <button onclick="filterBrand('Ferrari')" class="segment-btn brand-btn" data-brand="Ferrari">Ferrari</button>
+                        <button onclick="filterBrand('Lamborghini')" class="segment-btn brand-btn" data-brand="Lamborghini">Lamborghini</button>
+                        <button onclick="filterBrand('Pagani')" class="segment-btn brand-btn" data-brand="Pagani">Pagani</button>
+                        <button onclick="filterBrand('Bugatti')" class="segment-btn brand-btn" data-brand="Bugatti">Bugatti</button>
+                        <button onclick="filterBrand('Koenigsegg')" class="segment-btn brand-btn" data-brand="Koenigsegg">Koenigsegg</button>
+                    </div>
+
+                    <!-- Theme Toggle -->
+                    <button onclick="toggleTheme()" class="w-10 h-10 rounded-full glass flex items-center justify-center text-gray-600 dark:text-yellow-400 hover:scale-110 transition-transform shadow-sm group border border-white/10 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-indigo-500 to-purple-500 opacity-0 dark:opacity-20 transition-opacity"></div>
+                        <i class="fa-solid fa-sun hidden dark:block text-yellow-300 drop-shadow-[0_0_8px_rgba(253,224,71,0.8)]"></i>
+                        <i class="fa-solid fa-moon block dark:hidden text-indigo-600"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Brand Switcher -->
+    <div class="md:hidden px-4 pt-4 sticky top-20 z-40 bg-transparent">
+        <div class="segmented-control glass h-10 w-full flex overflow-x-auto">
+            <button onclick="filterBrand('all')" class="segment-btn active flex-1 brand-btn whitespace-nowrap" data-brand="all">All</button>
+            <button onclick="filterBrand('Ferrari')" class="segment-btn flex-1 brand-btn whitespace-nowrap" data-brand="Ferrari">Ferrari</button>
+            <button onclick="filterBrand('Lamborghini')" class="segment-btn flex-1 brand-btn whitespace-nowrap" data-brand="Lamborghini">Lambo</button>
+            <button onclick="filterBrand('Pagani')" class="segment-btn flex-1 brand-btn whitespace-nowrap" data-brand="Pagani">Pagani</button>
+            <button onclick="filterBrand('Bugatti')" class="segment-btn flex-1 brand-btn whitespace-nowrap" data-brand="Bugatti">Bugatti</button>
+            <button onclick="filterBrand('Koenigsegg')" class="segment-btn flex-1 brand-btn whitespace-nowrap" data-brand="Koenigsegg">Koenigsegg</button>
+        </div>
+    </div>
+
+    <!-- Controls & Stats -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full z-10">
+        
+        <!-- Dashboard Stats -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+            <div class="glass p-5 rounded-xl border-l-4 border-red-600 flex flex-col justify-between group relative overflow-hidden">
+                <div class="absolute right-0 top-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                    <div class="text-5xl">🏎️</div>
+                </div>
+                <div class="text-gray-500 dark:text-gray-400 text-[10px] uppercase tracking-widest font-bold mb-1">Total Models (2015-26)</div>
+                <div class="text-4xl font-racing text-gray-900 dark:text-white" id="stat-total">0</div>
+            </div>
+            <div class="glass p-5 rounded-xl border-l-4 border-yellow-400 flex flex-col justify-between">
+                <div class="text-gray-500 dark:text-gray-400 text-[10px] uppercase tracking-widest font-bold mb-1">V12+ Engines</div>
+                <div class="text-4xl font-racing text-yellow-500 dark:text-yellow-400" id="stat-v12">0</div>
+            </div>
+            <div class="glass p-5 rounded-xl border-l-4 border-emerald-500 flex flex-col justify-between">
+                <div class="text-gray-500 dark:text-gray-400 text-[10px] uppercase tracking-widest font-bold mb-1">Active</div>
+                <div class="text-4xl font-racing text-emerald-500 dark:text-emerald-400" id="stat-active">0</div>
+            </div>
+            <div class="glass p-5 rounded-xl border-l-4 border-blue-500 flex flex-col justify-between">
+                <div class="text-gray-500 dark:text-gray-400 text-[10px] uppercase tracking-widest font-bold mb-1">Brands</div>
+                <div class="text-4xl font-racing text-blue-500 dark:text-blue-400" id="stat-brands">5</div>
+            </div>
+        </div>
+
+        <!-- Clean Filter Toolbar -->
+        <div class="flex flex-col xl:flex-row gap-4 justify-between items-center mb-8">
+            
+            <!-- Filters Group -->
+            <div class="flex flex-wrap gap-4 w-full xl:w-auto items-center">
+                <!-- Engine Select -->
+                <div class="segmented-control glass !p-0 !h-10">
+                    <select id="engine-select" onchange="filterEngine(this.value)" class="glass-select pl-4 pr-10">
+                        <option value="all">All Engines</option>
+                        <!-- Injected via JS -->
+                    </select>
+                </div>
+
+                <!-- Production Toggle -->
+                <button onclick="toggleProduction()" id="btn-prod" class="glass px-4 h-10 rounded-lg flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 hover:text-white transition-all whitespace-nowrap border border-transparent">
+                    <div class="w-3 h-3 border-2 border-current rounded-sm flex items-center justify-center">
+                        <div class="w-1.5 h-1.5 bg-current rounded-[1px] opacity-0 transition-opacity" id="prod-check"></div>
+                    </div>
+                    Active Only
+                </button>
+            </div>
+
+            <!-- Search & View -->
+            <div class="flex gap-4 w-full xl:w-auto h-10">
+                <!-- Search -->
+                <div class="relative flex-grow sm:w-64 h-full segmented-control glass !p-0 overflow-hidden group focus-within:ring-2 ring-white/20 transition-all">
+                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 transition-colors text-xs"></i>
+                    <input type="text" id="searchInput" placeholder="Search spec..." 
+                        class="w-full h-full bg-transparent border-none pl-10 pr-4 text-xs font-bold uppercase tracking-wider
+                               focus:outline-none text-gray-700 dark:text-gray-200
+                               placeholder-gray-500 dark:placeholder-gray-500">
+                </div>
+                
+                <!-- View Toggle -->
+                <div class="segmented-control glass !h-full shrink-0 flex items-center !p-1">
+                    <button onclick="toggleView('grid')" id="btn-grid" class="segment-btn active !px-3"><i class="fa-solid fa-border-all"></i></button>
+                    <button onclick="toggleView('timeline')" id="btn-timeline" class="segment-btn !px-3"><i class="fa-solid fa-bars-staggered"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Grid View -->
+        <div id="products-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 animate-fade-in pb-24">
+            <!-- Cards injected via JS -->
+        </div>
+
+        <!-- Timeline View -->
+        <div id="products-timeline" class="hidden glass p-6 rounded-2xl overflow-x-auto mb-24 shadow-2xl border-t-4 border-white/10">
+            <div class="min-w-[3000px]"> 
+                <!-- Years Header -->
+                <div class="flex border-b border-gray-200 dark:border-white/10 pb-4 mb-6 text-xs font-bold text-gray-400 font-mono sticky top-0 bg-white/80 dark:bg-[#1a1a1a]/80 backdrop-blur-md z-20">
+                    <div class="w-48 shrink-0 pl-4 flex items-center gap-2">
+                        🏎️ Model
+                    </div>
+                    <div class="flex-1 grid text-center relative" id="timeline-header" style="grid-template-columns: repeat(80, minmax(0, 1fr));">
+                         <!-- Generated by JS -->
+                    </div>
+                </div>
+                <!-- Timeline Rows -->
+                <div id="timeline-rows" class="space-y-3 pb-4"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="fixed bottom-0 left-0 w-full glass border-t border-white/20 dark:border-white/10 z-50 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-8 flex items-center justify-between text-[10px] font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide">
+            <div>
+                &copy; 2026 <a href="https://aimaverick.me" target="_blank" class="hover:text-white transition-colors">@amsubhzd</a>
+            </div>
+            <div>
+                Designed by <span class="text-white font-bold">AIMaverick</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Data Injection with Specs -->
+    <script id="car-data" type="application/json">
+    [
+        {"name": "488 GTB", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/488-gtb", "cat": "Sport", "body": "Coupe", "cyl": "V8", "hp": 661, "accel": "3.0s", "launch": "2015-03-01", "eol": "2019-12-31"},
+        {"name": "488 Spider", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/488-spider", "cat": "Sport", "body": "Spider", "cyl": "V8", "hp": 661, "accel": "3.0s", "launch": "2015-09-01", "eol": "2019-12-31"},
+        {"name": "F12tdf", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/f12tdf", "cat": "GT", "body": "Coupe", "cyl": "V12", "hp": 769, "accel": "2.9s", "launch": "2015-10-01", "eol": "2017-12-31"},
+        {"name": "GTC4Lusso", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/gtc4lusso", "cat": "GT", "body": "Shooting Brake", "cyl": "V12", "hp": 680, "accel": "3.4s", "launch": "2016-03-01", "eol": "2020-08-31"},
+        {"name": "GTC4Lusso T", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/gtc4lusso-t", "cat": "GT", "body": "Shooting Brake", "cyl": "V8", "hp": 602, "accel": "3.5s", "launch": "2016-09-01", "eol": "2020-08-31"},
+        {"name": "LaFerrari Aperta", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/laferrari-aperta", "cat": "Hypercar", "body": "Roadster", "cyl": "V12", "hp": 950, "accel": "2.4s", "launch": "2016-09-01", "eol": "2018-12-31"},
+        {"name": "J50", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/j50", "cat": "Sport", "body": "Roadster", "cyl": "V8", "hp": 681, "accel": "3.0s", "launch": "2016-12-13", "eol": "2017-12-31"},
+        {"name": "812 Superfast", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/812-superfast", "cat": "GT", "body": "Coupe", "cyl": "V12", "hp": 789, "accel": "2.9s", "launch": "2017-03-01", "eol": "2024-05-01"},
+        {"name": "Portofino", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/portofino", "cat": "GT", "body": "Spider", "cyl": "V8", "hp": 591, "accel": "3.5s", "launch": "2017-09-01", "eol": "2021-12-31"},
+        {"name": "488 Pista", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/488-pista", "cat": "Sport", "body": "Coupe", "cyl": "V8", "hp": 710, "accel": "2.8s", "launch": "2018-03-01", "eol": "2020-12-31"},
+        {"name": "488 Pista Spider", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/488-pista-spider", "cat": "Sport", "body": "Spider", "cyl": "V8", "hp": 710, "accel": "2.85s", "launch": "2018-08-26", "eol": "2020-12-31"},
+        {"name": "Monza SP1/SP2", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/monza-sp1", "cat": "Icona", "body": "Speedster", "cyl": "V12", "hp": 799, "accel": "2.9s", "launch": "2018-09-01", "eol": "2022-12-31"},
+        {"name": "F8 Tributo", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/f8-tributo", "cat": "Sport", "body": "Coupe", "cyl": "V8", "hp": 710, "accel": "2.9s", "launch": "2019-03-01", "eol": "2023-04-01"},
+        {"name": "F8 Spider", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/f8-spider", "cat": "Sport", "body": "Spider", "cyl": "V8", "hp": 710, "accel": "2.9s", "launch": "2019-09-01", "eol": "2023-04-01"},
+        {"name": "SF90 Stradale", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/sf90-stradale", "cat": "Hypercar", "body": "Coupe", "cyl": "V8", "hp": 986, "accel": "2.5s", "launch": "2019-05-29", "eol": null},
+        {"name": "812 GTS", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/812-gts", "cat": "GT", "body": "Spider", "cyl": "V12", "hp": 789, "accel": "3.0s", "launch": "2019-09-01", "eol": "2024-05-01"},
+        {"name": "Roma", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/roma", "cat": "GT", "body": "Coupe", "cyl": "V8", "hp": 612, "accel": "3.4s", "launch": "2019-11-14", "eol": null},
+        {"name": "Portofino M", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/portofino-m", "cat": "GT", "body": "Spider", "cyl": "V8", "hp": 612, "accel": "3.4s", "launch": "2020-09-01", "eol": "2023-12-31"},
+        {"name": "SF90 Spider", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/sf90-spider", "cat": "Hypercar", "body": "Spider", "cyl": "V8", "hp": 986, "accel": "2.5s", "launch": "2020-11-12", "eol": null},
+        {"name": "812 Competizione", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/812-competizione", "cat": "GT", "body": "Coupe", "cyl": "V12", "hp": 819, "accel": "2.85s", "launch": "2021-05-05", "eol": "2023-12-31"},
+        {"name": "812 Competizione A", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/812-competizione-a", "cat": "GT", "body": "Targa", "cyl": "V12", "hp": 819, "accel": "2.85s", "launch": "2021-05-05", "eol": "2023-12-31"},
+        {"name": "296 GTB", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/296-gtb", "cat": "Sport", "body": "Coupe", "cyl": "V6", "hp": 819, "accel": "2.9s", "launch": "2021-06-24", "eol": null},
+        {"name": "Daytona SP3", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/daytona-sp3", "cat": "Icona", "body": "Targa", "cyl": "V12", "hp": 829, "accel": "2.85s", "launch": "2021-11-20", "eol": null},
+        {"name": "296 GTS", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/296-gts", "cat": "Sport", "body": "Spider", "cyl": "V6", "hp": 819, "accel": "2.9s", "launch": "2022-04-19", "eol": null},
+        {"name": "Purosangue", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/purosangue", "cat": "GT", "body": "SUV", "cyl": "V12", "hp": 715, "accel": "3.3s", "launch": "2022-09-13", "eol": null},
+        {"name": "Roma Spider", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/roma-spider", "cat": "GT", "body": "Spider", "cyl": "V8", "hp": 612, "accel": "3.4s", "launch": "2023-03-16", "eol": null},
+        {"name": "SF90 XX Stradale", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/sf90-xx-stradale", "cat": "Hypercar", "body": "Coupe", "cyl": "V8", "hp": 1016, "accel": "2.3s", "launch": "2023-06-29", "eol": null},
+        {"name": "SF90 XX Spider", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/sf90-xx-spider", "cat": "Hypercar", "body": "Spider", "cyl": "V8", "hp": 1016, "accel": "2.3s", "launch": "2023-06-29", "eol": null},
+        {"name": "12Cilindri", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/12cilindri", "cat": "GT", "body": "Coupe", "cyl": "V12", "hp": 819, "accel": "2.9s", "launch": "2024-05-03", "eol": null},
+        {"name": "12Cilindri Spider", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/12cilindri-spider", "cat": "GT", "body": "Spider", "cyl": "V12", "hp": 819, "accel": "2.9s", "launch": "2024-05-03", "eol": null},
+        {"name": "Amalfi", "brand": "Ferrari", "url": "#", "cat": "GT", "body": "Coupe", "cyl": "V6", "hp": 700, "accel": "3.1s", "launch": "2025-06-01", "eol": null},
+        {"name": "F80", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/f80", "cat": "Hypercar", "body": "Coupe", "cyl": "V6", "hp": 1184, "accel": "2.15s", "launch": "2025-10-01", "eol": null},
+        
+        {"name": "Huracán", "brand": "Lamborghini", "url": "https://www.lamborghini.com/en-en/models/huracan", "cat": "Sport", "body": "Coupe", "cyl": "V10", "hp": 631, "accel": "2.9s", "launch": "2014-01-01", "eol": "2024-12-31"},
+        {"name": "Huracán Spyder", "brand": "Lamborghini", "url": "https://www.lamborghini.com/en-en/models/huracan", "cat": "Sport", "body": "Spider", "cyl": "V10", "hp": 631, "accel": "3.1s", "launch": "2015-09-01", "eol": "2024-12-31"},
+        {"name": "Centenario", "brand": "Lamborghini", "url": "https://www.lamborghini.com/en-en/history/centenario-coupe", "cat": "Icona", "body": "Coupe", "cyl": "V12", "hp": 759, "accel": "2.8s", "launch": "2016-01-01", "eol": "2017-12-31"},
+        {"name": "Urus", "brand": "Lamborghini", "url": "https://www.lamborghini.com/en-en/models/urus", "cat": "SUV", "body": "SUV", "cyl": "V8", "hp": 641, "accel": "3.6s", "launch": "2018-01-01", "eol": null},
+        {"name": "Sián FKP 37", "brand": "Lamborghini", "url": "https://www.lamborghini.com/en-en/models/sian-fkp-37", "cat": "Hypercar", "body": "Coupe", "cyl": "V12", "hp": 808, "accel": "2.8s", "launch": "2019-09-01", "eol": "2020-12-31"},
+        {"name": "Sián Roadster", "brand": "Lamborghini", "url": "https://www.lamborghini.com/en-en/models/sian-roadster", "cat": "Hypercar", "body": "Roadster", "cyl": "V12", "hp": 808, "accel": "2.9s", "launch": "2020-07-01", "eol": "2021-12-31"},
+        {"name": "Countach LPI 800-4", "brand": "Lamborghini", "url": "https://www.lamborghini.com/en-en/models/countach-lpi-800-4", "cat": "Icona", "body": "Coupe", "cyl": "V12", "hp": 803, "accel": "2.8s", "launch": "2021-08-13", "eol": "2022-12-31"},
+        {"name": "Revuelto", "brand": "Lamborghini", "url": "https://www.lamborghini.com/en-en/models/revuelto", "cat": "Hypercar", "body": "Coupe", "cyl": "V12", "hp": 1001, "accel": "2.5s", "launch": "2023-03-01", "eol": null},
+        {"name": "Temerario", "brand": "Lamborghini", "url": "#", "cat": "Sport", "body": "Coupe", "cyl": "V8", "hp": 907, "accel": "2.7s", "launch": "2024-08-01", "eol": null},
+
+        {"name": "Huayra BC", "brand": "Pagani", "url": "https://www.pagani.com/huayra-bc/", "cat": "Hypercar", "body": "Coupe", "cyl": "V12", "hp": 745, "accel": "2.8s", "launch": "2016-01-01", "eol": "2019-12-31"},
+        {"name": "Huayra Roadster", "brand": "Pagani", "url": "https://www.pagani.com/huayra-roadster/", "cat": "Hypercar", "body": "Roadster", "cyl": "V12", "hp": 754, "accel": "2.8s", "launch": "2017-01-01", "eol": "2020-12-31"},
+        {"name": "Huayra Roadster BC", "brand": "Pagani", "url": "https://www.pagani.com/huayra-roadster-bc/", "cat": "Hypercar", "body": "Roadster", "cyl": "V12", "hp": 791, "accel": "2.5s", "launch": "2019-07-31", "eol": "2021-12-31"},
+        {"name": "Imola", "brand": "Pagani", "url": "https://www.pagani.com/imola/", "cat": "Hypercar", "body": "Coupe", "cyl": "V12", "hp": 827, "accel": "2.5s", "launch": "2020-02-14", "eol": "2021-12-31"},
+        {"name": "Huayra R", "brand": "Pagani", "url": "https://www.pagani.com/huayra-r/", "cat": "Track", "body": "Coupe", "cyl": "V12", "hp": 838, "accel": "2.5s", "launch": "2021-03-18", "eol": "2022-12-31"},
+        {"name": "Huayra Codalunga", "brand": "Pagani", "url": "https://www.pagani.com/huayra-codalunga/", "cat": "Icona", "body": "Coupe", "cyl": "V12", "hp": 840, "accel": "2.8s", "launch": "2022-06-16", "eol": "2023-12-31"},
+        {"name": "Utopia", "brand": "Pagani", "url": "https://www.pagani.com/pagani-utopia/", "cat": "Hypercar", "body": "Coupe", "cyl": "V12", "hp": 852, "accel": "2.7s", "launch": "2022-09-12", "eol": null},
+        {"name": "Utopia Roadster", "brand": "Pagani", "url": "https://www.pagani.com/utopia-roadster/", "cat": "Hypercar", "body": "Roadster", "cyl": "V12", "hp": 852, "accel": "2.7s", "launch": "2024-07-30", "eol": null},
+
+        {"name": "Chiron", "brand": "Bugatti", "url": "https://www.bugatti.com/models/chiron/", "cat": "Hypercar", "body": "Coupe", "cyl": "W16", "hp": 1479, "accel": "2.4s", "launch": "2016-03-01", "eol": "2022-12-31"},
+        {"name": "Divo", "brand": "Bugatti", "url": "https://www.bugatti.com/models/divo/", "cat": "Hypercar", "body": "Coupe", "cyl": "W16", "hp": 1479, "accel": "2.4s", "launch": "2018-08-24", "eol": "2021-12-31"},
+        {"name": "La Voiture Noire", "brand": "Bugatti", "url": "https://www.bugatti.com/models/la-voiture-noire/", "cat": "One-off", "body": "Coupe", "cyl": "W16", "hp": 1479, "accel": "2.4s", "launch": "2019-03-01", "eol": "2019-12-31"},
+        {"name": "Centodieci", "brand": "Bugatti", "url": "https://www.bugatti.com/models/centodieci/", "cat": "Hypercar", "body": "Coupe", "cyl": "W16", "hp": 1578, "accel": "2.4s", "launch": "2019-08-16", "eol": "2022-12-31"},
+        {"name": "Chiron Super Sport", "brand": "Bugatti", "url": "https://www.bugatti.com/models/chiron-super-sport/", "cat": "Hypercar", "body": "Coupe", "cyl": "W16", "hp": 1578, "accel": "2.4s", "launch": "2021-06-08", "eol": "2022-12-31"},
+        {"name": "Bolide", "brand": "Bugatti", "url": "https://www.bugatti.com/models/bolide/", "cat": "Track", "body": "Coupe", "cyl": "W16", "hp": 1825, "accel": "2.17s", "launch": "2024-01-01", "eol": null},
+        {"name": "W16 Mistral", "brand": "Bugatti", "url": "https://www.bugatti.com/models/w16-mistral/", "cat": "Hypercar", "body": "Roadster", "cyl": "W16", "hp": 1578, "accel": "2.3s", "launch": "2022-08-19", "eol": null},
+        {"name": "Tourbillon", "brand": "Bugatti", "url": "https://www.bugatti.com/models/tourbillon/", "cat": "Hypercar", "body": "Coupe", "cyl": "V16", "hp": 1775, "accel": "2.0s", "launch": "2026-01-01", "eol": null},
+
+        {"name": "Agera RS", "brand": "Koenigsegg", "url": "https://www.koenigsegg.com/model/agera-rs", "cat": "Hypercar", "body": "Targa", "cyl": "V8", "hp": 1160, "accel": "2.8s", "launch": "2015-01-01", "eol": "2018-12-31"},
+        {"name": "Regera", "brand": "Koenigsegg", "url": "https://www.koenigsegg.com/model/regera", "cat": "Hypercar", "body": "Targa", "cyl": "V8", "hp": 1500, "accel": "2.8s", "launch": "2016-01-01", "eol": "2022-12-31"},
+        {"name": "Jesko Attack", "brand": "Koenigsegg", "url": "https://www.koenigsegg.com/model/jesko-attack", "cat": "Hypercar", "body": "Targa", "cyl": "V8", "hp": 1280, "accel": "2.5s", "launch": "2019-03-01", "eol": null},
+        {"name": "Jesko Absolut", "brand": "Koenigsegg", "url": "https://www.koenigsegg.com/model/jesko-absolut", "cat": "Hypercar", "body": "Targa", "cyl": "V8", "hp": 1600, "accel": "2.5s", "launch": "2020-03-01", "eol": null},
+        {"name": "Gemera", "brand": "Koenigsegg", "url": "https://www.koenigsegg.com/model/gemera", "cat": "GT", "body": "Coupe", "cyl": "V8", "hp": 2300, "accel": "1.9s", "launch": "2020-03-01", "eol": null},
+        {"name": "CC850", "brand": "Koenigsegg", "url": "https://www.koenigsegg.com/model/cc850", "cat": "Hypercar", "body": "Targa", "cyl": "V8", "hp": 1385, "accel": "2.5s", "launch": "2022-08-19", "eol": null}
+    ]
+    </script>
+
+    <!-- Logic -->
+    <script>
+        // --- DATA ---
+        let products = JSON.parse(document.getElementById('car-data').textContent);
+        
+        // Filter for 2015-2026 window (Active cars)
+        const minWindow = 2015;
+        const maxWindow = 2026;
+        
+        products = products.filter(p => {
+            const launchYear = new Date(p.launch).getFullYear();
+            const endYear = p.eol ? new Date(p.eol).getFullYear() : new Date().getFullYear();
+            return (launchYear <= maxWindow && endYear >= minWindow);
+        });
+
+        const engines = ['V6', 'V8', 'V10', 'V12', 'V16', 'W16'];
+        
+        // --- STATE ---
+        let currentEra = 'all'; 
+        let currentBrand = 'all';
+        let currentEngine = 'all';
+        let currentSearch = '';
+        let showOnlyProduction = false;
+
+        // --- AUDIO ENGINE (Procedural Fallback) ---
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        let audioCtx;
+        let activeOscillators = []; // Store active sound nodes to stop them
+
+        function initAudio() {
+            if (!audioCtx) {
+                audioCtx = new AudioContext();
+            }
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+        }
+
+        function stopAllSounds() {
+            activeOscillators.forEach(node => {
+                try { node.stop(); node.disconnect(); } catch(e){}
+            });
+            activeOscillators = [];
+            
+            // Reset visuals
+            document.querySelectorAll('.active-engine').forEach(el => {
+                el.classList.remove('active-engine', 'running', 'revving');
+                const icon = el.querySelector('i');
+                if(icon) {
+                    icon.className = "fa-solid fa-power-off text-sm";
+                    icon.parentElement.title = "Start Engine";
+                }
+            });
+            document.querySelectorAll('.animate-rumble').forEach(el => el.classList.remove('animate-rumble'));
+        }
+
+        // Engine synth logic
+        function createEngineSound(type, action) {
+            initAudio();
+            const t = audioCtx.currentTime;
+            
+            // Nodes
+            const osc = audioCtx.createOscillator();
+            const noise = audioCtx.createBufferSource();
+            const gain = audioCtx.createGain();
+            const filter = audioCtx.createBiquadFilter();
+            
+            // Track them
+            activeOscillators.push(osc);
+            activeOscillators.push(noise);
+
+            // Noise buffer (Rumble)
+            const bufferSize = audioCtx.sampleRate * 2; // 2 seconds
+            const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+            const data = buffer.getChannelData(0);
+            for (let i = 0; i < bufferSize; i++) {
+                data[i] = Math.random() * 2 - 1;
+            }
+            noise.buffer = buffer;
+            noise.loop = true;
+
+            // Settings based on engine type
+            let baseFreq = 60; // V8 default
+            let rumbleAmt = 0.5;
+            
+            if (type === 'V6') { baseFreq = 90; rumbleAmt = 0.3; }
+            if (type === 'V10') { baseFreq = 80; rumbleAmt = 0.4; }
+            if (type === 'V12') { baseFreq = 100; rumbleAmt = 0.2; } // Screamer
+            if (type === 'W16' || type === 'V16') { baseFreq = 40; rumbleAmt = 0.8; } // Deep
+
+            // Rev vs Idle
+            if (action === 'rev') {
+                baseFreq *= 3; // Rev up
+                gain.gain.setValueAtTime(0.5, t);
+                gain.gain.exponentialRampToValueAtTime(0.01, t + 0.6); // Quick fade out
+                
+                // Pitch Envelope
+                osc.frequency.setValueAtTime(baseFreq, t);
+                osc.frequency.linearRampToValueAtTime(baseFreq * 1.5, t + 0.1);
+                osc.frequency.exponentialRampToValueAtTime(baseFreq * 0.5, t + 0.5);
+                
+                // Filter open
+                filter.frequency.setValueAtTime(800, t);
+                filter.frequency.linearRampToValueAtTime(2000, t + 0.1);
+                filter.frequency.exponentialRampToValueAtTime(400, t + 0.5);
+
+            } else { // Idle / Start
+                gain.gain.setValueAtTime(0, t);
+                gain.gain.linearRampToValueAtTime(0.5, t + 0.1);
+                gain.gain.linearRampToValueAtTime(0.3, t + 0.5); // Settle to idle
+                // Removed auto-stop for idle to let it loop until another button press or explicit stop
+                // But for simplicity let's fade out after 4s
+                gain.gain.exponentialRampToValueAtTime(0.01, t + 4.0); 
+
+                osc.frequency.setValueAtTime(0, t);
+                osc.frequency.linearRampToValueAtTime(baseFreq * 1.5, t + 0.2); // Crank
+                osc.frequency.linearRampToValueAtTime(baseFreq, t + 0.5); // Idle
+
+                filter.frequency.setValueAtTime(200, t);
+            }
+
+            // Connect graph
+            // Osc (Tone) -> Filter -> Gain -> Dest
+            osc.type = 'sawtooth';
+            osc.connect(filter);
+            
+            // Noise (Rumble) -> Filter -> Gain -> Dest
+            noise.connect(filter);
+
+            filter.type = 'lowpass';
+            filter.connect(gain);
+            gain.connect(audioCtx.destination);
+
+            osc.start(t);
+            noise.start(t);
+            
+            // cleanup logic
+            osc.onended = () => {
+                osc.disconnect();
+                // remove from active array
+            };
+            
+            // Stop after time
+            osc.stop(t + (action==='rev'?0.6:4.0));
+            noise.stop(t + (action==='rev'?0.6:4.0));
+        }
+
+        function playEngineSound(btn, cyl) {
+            const card = btn.closest('.glass');
+            const icon = btn.querySelector('i');
+            
+            const isRunning = btn.classList.contains('active-engine');
+
+            if (!isRunning) {
+                // STOP ALL OTHERS
+                stopAllSounds();
+
+                // START SEQUENCE
+                btn.classList.add('active-engine', 'running');
+                icon.className = "fa-solid fa-gauge-high text-xs"; 
+                icon.parentElement.title = "Rev Engine";
+                
+                createEngineSound(cyl, 'start');
+
+                card.classList.add('animate-rumble');
+                // Animate Gauges
+                const hpGauge = card.querySelector('.hp-circle');
+                const accelGauge = card.querySelector('.accel-circle');
+                if(hpGauge) hpGauge.style.strokeDashoffset = hpGauge.dataset.offset;
+                if(accelGauge) accelGauge.style.strokeDashoffset = accelGauge.dataset.offset;
+
+            } else {
+                // REV SEQUENCE
+                btn.classList.add('revving');
+                setTimeout(() => btn.classList.remove('revving'), 300);
+
+                createEngineSound(cyl, 'rev');
+
+                card.classList.remove('animate-rumble');
+                void card.offsetWidth; 
+                card.classList.add('animate-rev');
+                setTimeout(() => {
+                    card.classList.remove('animate-rev');
+                    card.classList.add('animate-rumble');
+                }, 500);
+            }
+        }
+
+        // --- ENGINE ---
+        products.sort((a, b) => new Date(b.launch) - new Date(a.launch));
+
+        function getStatus(eolDate) {
+            if (!eolDate) return { label: 'ACTIVE', class: 'status-active' };
+            return { label: 'LEGACY', class: 'status-legacy' };
+        }
+
+        function getDuration(start, end) {
+            const s = new Date(start);
+            const e = end ? new Date(end) : new Date();
+            const diff = (e - s) / (1000 * 60 * 60 * 24 * 365.25);
+            return diff.toFixed(1) + " Years";
+        }
+
+        function getBrandClass(brand) {
+            return `glass-${brand.toLowerCase()}`;
+        }
+
+        // --- RENDERERS ---
+        const grid = document.getElementById('products-grid');
+        const timelineHeader = document.getElementById('timeline-header');
+        const timelineRows = document.getElementById('timeline-rows');
+        const engineSelect = document.getElementById('engine-select');
+
+        function renderFilters() {
+            let engHtml = `<option value="all">ALL ENGINES</option>`;
+            engines.forEach(eng => {
+                engHtml += `<option value="${eng}">${eng}</option>`;
+            });
+            engineSelect.innerHTML = engHtml;
+        }
+
+        function renderApp() {
+            grid.innerHTML = '';
+            timelineRows.innerHTML = '';
+            
+            // Stats
+            let total = 0, v12Plus = 0, active = 0;
+            const uniqueBrands = new Set();
+            const today = new Date();
+
+            // Timeline Setup
+            const minYear = 2015;
+            const maxYear = 2026;
+            const totalYears = maxYear - minYear + 1;
+            
+            // Render Timeline Header
+            let headerHTML = '';
+            for(let i=maxYear; i>=minYear; i--) {
+                headerHTML += `<div class="border-l border-gray-200 dark:border-white/5 h-4 flex items-end justify-center text-[10px] opacity-50 font-mono">${i}</div>`;
+            }
+            timelineHeader.innerHTML = headerHTML;
+
+            const filtered = products.filter(p => {
+                if (currentBrand !== 'all' && p.brand !== currentBrand) return false;
+                if (currentEngine !== 'all' && p.cyl !== currentEngine) return false;
+                if (showOnlyProduction && p.eol !== null) return false;
+                if (currentSearch && !p.name.toLowerCase().includes(currentSearch.toLowerCase())) return false;
+                return true;
+            });
+
+            filtered.forEach(p => {
+                total++;
+                uniqueBrands.add(p.brand);
+                if (['V12', 'V16', 'W16'].includes(p.cyl)) v12Plus++;
+                if (!p.eol) active++;
+                
+                const launchDate = new Date(p.launch);
+                const eolDate = p.eol ? new Date(p.eol) : today;
+                const status = getStatus(p.eol);
+
+                const card = document.createElement('div');
+                card.className = `${getBrandClass(p.brand)} glass p-6 rounded-xl card-hover group relative overflow-hidden flex flex-col justify-between min-h-[260px]`;
+                
+                card.onclick = (e) => {
+                    if(!e.target.closest('a') && !e.target.closest('button')) window.open(p.url, '_blank');
+                };
+                card.style.cursor = 'pointer';
+
+                // Gauges Logic
+                // HP: Max 2500 (bumped for Koenigsegg). Circumference ~ 150 (r=24)
+                const r = 24;
+                const c = 2 * Math.PI * r;
+                const hpOffset = c - (p.hp / 2500) * c;
+                
+                // Accel: Max 4.0s. Fill = (4 - accel) / 2.0 (since min ~2.0). Let's map 2.0s -> 100%, 4.0s -> 0%
+                // Range 2.0s. 
+                const accelVal = parseFloat(p.accel);
+                const accelPct = Math.max(0, Math.min(1, (4.5 - accelVal) / 2.5)); // Map 2.0-4.5s range
+                const accelOffset = c - (accelPct * c);
+
+                card.innerHTML = `
+                    <div class="flex justify-between items-start mb-4 relative z-10">
+                        <div>
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="text-[10px] font-bold tracking-widest uppercase opacity-60">${p.brand}</span>
+                                <div class="h-[1px] w-8 bg-current opacity-30"></div>
+                            </div>
+                            <h3 class="text-2xl font-bold font-racing tracking-wide group-hover:scale-105 transition-transform origin-left">${p.name}</h3>
+                        </div>
+                        <div class="flex flex-col items-end gap-2">
+                            <span class="badge ${status.class} backdrop-blur-md shadow-sm">${status.label}</span>
+                            <button class="btn-start w-10 h-10 rounded-full border border-current opacity-60 hover:opacity-100 flex items-center justify-center transition-all hover:bg-white/20 shadow-lg" 
+                                    onclick="playEngineSound(this, '${p.cyl}')" title="Start Engine">
+                                <i class="fa-solid fa-power-off text-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-around items-center mb-6 relative z-10">
+                        <!-- Spec: HP Gauge -->
+                        <div class="relative w-20 h-20 flex items-center justify-center">
+                            <svg class="w-full h-full transform -rotate-90">
+                                <circle cx="40" cy="40" r="${r}" stroke="currentColor" stroke-width="4" fill="transparent" class="opacity-10" />
+                                <circle cx="40" cy="40" r="${r}" stroke="currentColor" stroke-width="4" fill="transparent" 
+                                        stroke-dasharray="${c}" stroke-dashoffset="${c}" 
+                                        data-offset="${hpOffset}"
+                                        class="hp-circle transition-all duration-1000 ease-out" 
+                                        style="stroke-linecap: round;" />
+                            </svg>
+                            <div class="absolute text-center">
+                                <span class="text-sm font-bold block leading-none font-racing">${p.hp}</span>
+                                <span class="text-[9px] opacity-60 uppercase font-bold">HP</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Spec: Accel Gauge -->
+                        <div class="relative w-20 h-20 flex items-center justify-center">
+                            <svg class="w-full h-full transform rotate-90 scale-x-[-1]"> <!-- Counter clockwise fill -->
+                                <circle cx="40" cy="40" r="${r}" stroke="currentColor" stroke-width="4" fill="transparent" class="opacity-10" />
+                                <circle cx="40" cy="40" r="${r}" stroke="currentColor" stroke-width="4" fill="transparent" 
+                                        stroke-dasharray="${c}" stroke-dashoffset="${c}" 
+                                        data-offset="${accelOffset}"
+                                        class="accel-circle transition-all duration-1000 ease-out delay-100" 
+                                        style="stroke-linecap: round;" />
+                            </svg>
+                            <div class="absolute text-center">
+                                <span class="text-sm font-bold block leading-none font-racing">${p.accel}</span>
+                                <span class="text-[9px] opacity-60 uppercase font-bold">0-60</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-2 text-xs mb-4 opacity-80 font-mono">
+                         <div class="bg-black/5 dark:bg-white/5 p-1 rounded text-center">
+                            <span class="opacity-50 block text-[8px] uppercase">Engine</span>
+                            <b>${p.cyl}</b>
+                         </div>
+                         <div class="bg-black/5 dark:bg-white/5 p-1 rounded text-center">
+                            <span class="opacity-50 block text-[8px] uppercase">Body</span>
+                            <b>${p.body}</b>
+                         </div>
+                    </div>
+
+                    <div class="mt-auto relative z-10">
+                        <div class="w-full bg-black/10 dark:bg-white/10 h-1 rounded-full mb-4 overflow-hidden">
+                             <div class="lifecycle-fill ${!p.eol ? 'bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.5)]' : 'bg-gray-500 opacity-50'}" style="width: 100%"></div>
+                        </div>
+                        <div class="flex justify-between items-center text-xs opacity-60 group-hover:opacity-100 transition-opacity">
+                            <span class="uppercase tracking-wider font-bold text-[9px]">${p.cat}</span>
+                            <span class="flex items-center gap-1 font-bold">SPEC SHEET <i class="fa-solid fa-arrow-right text-[9px]"></i></span>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+                
+                // Trigger gauge animation after render
+                setTimeout(() => {
+                    const hp = card.querySelector('.hp-circle');
+                    const acc = card.querySelector('.accel-circle');
+                    if(hp) hp.style.strokeDashoffset = hp.dataset.offset;
+                    if(acc) acc.style.strokeDashoffset = acc.dataset.offset;
+                }, 100);
+
+                const launchYearVal = launchDate.getFullYear() + (launchDate.getMonth()/12);
+                let endYearVal = eolDate.getFullYear() + (eolDate.getMonth()/12);
+                const startPct = ((maxYear - launchYearVal) / totalYears) * 100;
+                const endPct = ((maxYear - endYearVal) / totalYears) * 100;
+                const width = Math.max(startPct - endPct, 1); 
+                const left = Math.max(endPct, 0);
+
+                const row = document.createElement('div');
+                row.className = 'flex items-center group py-1.5 hover:bg-white/5 transition-colors rounded cursor-pointer';
+                row.onclick = () => window.open(p.url, '_blank');
+                
+                let barGradient = 'bg-gray-600';
+                if(p.brand === 'Ferrari') barGradient = 'bg-gradient-to-r from-ferrari-dark to-ferrari-red';
+                if(p.brand === 'Lamborghini') barGradient = 'bg-gradient-to-r from-lambo-orange to-lambo-yellow';
+                if(p.brand === 'Pagani') barGradient = 'bg-gradient-to-r from-pagani-blue to-pagani-silver';
+                if(p.brand === 'Bugatti') barGradient = 'bg-gradient-to-r from-bugatti-dark to-bugatti-blue';
+                if(p.brand === 'Koenigsegg') barGradient = 'bg-gradient-to-r from-gray-500 to-koenigsegg-yellow';
+
+                row.innerHTML = `
+                    <div class="w-48 shrink-0 text-gray-500 dark:text-gray-400 text-xs font-bold pl-4 truncate flex items-center gap-2 group-hover:text-white transition-colors">
+                        <span class="w-1.5 h-1.5 rounded-full ${!p.eol ? 'bg-emerald-500 animate-pulse box-shadow-glow' : 'bg-gray-600'}"></span>
+                        <span class="opacity-40 text-[9px] uppercase w-8 text-right mr-1 font-mono tracking-tighter">${p.brand.substring(0,3)}</span>
+                        ${p.name}
+                    </div>
+                    <div class="flex-1 relative h-7 mx-2">
+                        <div class="absolute top-1.5 bottom-1.5 rounded-[2px] timeline-bar ${barGradient} border border-white/5 shadow-sm group-hover:shadow-md transition-all"
+                             style="left: ${left}%; width: ${width}%;">
+                             <div class="timeline-marker left-1/2 transform -translate-x-1/2 bg-black/80 backdrop-blur text-white px-2 py-0.5 rounded border border-white/10 shadow-xl z-20">
+                                <span class="font-bold text-yellow-400">${p.hp}hp</span> ${p.name}
+                             </div>
+                        </div>
+                    </div>
+                `;
+                timelineRows.appendChild(row);
+            });
+
+            document.getElementById('stat-total').innerText = total;
+            document.getElementById('stat-v12').innerText = v12Plus;
+            document.getElementById('stat-active').innerText = active;
+            document.getElementById('stat-brands').innerText = uniqueBrands.size;
+        }
+
+        function filterBrand(brand) {
+            currentBrand = brand;
+            document.querySelectorAll('.brand-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.brand === brand);
+            });
+            renderApp();
+        }
+
+        function filterEngine(eng) {
+            currentEngine = eng;
+            renderApp();
+        }
+
+        function toggleProduction() {
+            showOnlyProduction = !showOnlyProduction;
+            const btn = document.getElementById('btn-prod');
+            const check = document.getElementById('prod-check');
+            
+            if (showOnlyProduction) {
+                btn.classList.add('bg-white/10', 'text-white', 'border-white/20');
+                btn.classList.remove('text-gray-500', 'dark:text-gray-400', 'border-transparent');
+                check.classList.remove('opacity-0');
+            } else {
+                btn.classList.remove('bg-white/10', 'text-white', 'border-white/20');
+                btn.classList.add('text-gray-500', 'dark:text-gray-400', 'border-transparent');
+                check.classList.add('opacity-0');
+            }
+            renderApp();
+        }
+
+        function toggleView(view) {
+            const gridView = document.getElementById('products-grid');
+            const timelineView = document.getElementById('products-timeline');
+            
+            if (view === 'grid') {
+                gridView.classList.remove('hidden');
+                timelineView.classList.add('hidden');
+                document.getElementById('btn-grid').classList.add('active');
+                document.getElementById('btn-timeline').classList.remove('active');
+            } else {
+                gridView.classList.add('hidden');
+                timelineView.classList.remove('hidden');
+                document.getElementById('btn-timeline').classList.add('active');
+                document.getElementById('btn-grid').classList.remove('active');
+            }
+        }
+
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+        }
+
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            currentSearch = e.target.value;
+            renderApp();
+        });
+
+        renderFilters();
+        renderApp();
+
+    </script>
+</body>
+</html>
