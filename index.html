@@ -14,8 +14,8 @@
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://dreamfleet.aimaverick.me">
-    <meta property="og:title" content="DreamFleet | Car Specs">
-    <meta property="og:description" content="Reference of the DPDP Act 2023 with simplified layman summaries. Access rights, penalties, and obligations for data processing in India.">
+    <meta property="og:title" content="DreamFleet 🏎️ ">
+    <meta property="og:description" content="Explore dream machines from Ferrari, Lamborghini, Bugatti, Koenigsegg, and Pagani — all in one premium playground for car lovers.">
     <meta property="og:image" content="fc_og.png">
 
     <!-- Twitter -->
@@ -66,6 +66,8 @@
                         'rumble': 'rumble 0.2s cubic-bezier(.36,.07,.19,.97) infinite',
                         'rev': 'rumble 0.1s cubic-bezier(.36,.07,.19,.97) infinite',
                         'dash': 'dash 1.5s ease-out forwards',
+                        'pulse-glow': 'pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'winner-bounce': 'winner-bounce 1s infinite',
                     },
                     keyframes: {
                         rumble: {
@@ -78,6 +80,14 @@
                         dash: {
                             '0%': { strokeDashoffset: '100' },
                             '100%': { strokeDashoffset: 'var(--target-offset)' }
+                        },
+                        'pulse-glow': {
+                            '0%, 100%': { opacity: '1', boxShadow: '0 0 15px rgba(16, 185, 129, 0.5)' },
+                            '50%': { opacity: '.8', boxShadow: '0 0 5px rgba(16, 185, 129, 0.2)' },
+                        },
+                        'winner-bounce': {
+                            '0%, 100%': { transform: 'translateY(-25%)', animationTimingFunction: 'cubic-bezier(0.8, 0, 1, 1)' },
+                            '50%': { transform: 'translateY(0)', animationTimingFunction: 'cubic-bezier(0, 0, 0.2, 1)' },
                         }
                     }
                 }
@@ -139,16 +149,16 @@
             --brand-color: #ff2800;
         }
         .glass-lamborghini {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 250, 230, 0.95));
-            border-left: 4px solid #ffb900;
-            box-shadow: 0 4px 15px rgba(255, 185, 0, 0.1);
-            --brand-color: #ffb900;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 255, 230, 0.95));
+            border-left: 4px solid #84cc16;
+            box-shadow: 0 4px 15px rgba(132, 204, 22, 0.1);
+            --brand-color: #84cc16;
         }
         .glass-pagani {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 245, 255, 0.95));
-            border-left: 4px solid #4b6cb7;
-            box-shadow: 0 4px 15px rgba(75, 108, 183, 0.1);
-            --brand-color: #4b6cb7;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(245, 240, 255, 0.95));
+            border-left: 4px solid #8b5cf6;
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.1);
+            --brand-color: #8b5cf6;
         }
         .glass-bugatti {
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(230, 245, 255, 0.95));
@@ -158,9 +168,9 @@
         }
         .glass-koenigsegg {
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 240, 240, 0.95));
-            border-left: 4px solid #9ca3af;
+            border-left: 4px solid #fbbf24;
             box-shadow: 0 4px 15px rgba(156, 163, 175, 0.1);
-            --brand-color: #fbbf24; /* Yellow for dark mode contrast */
+            --brand-color: #fbbf24;
         }
 
         /* Dark Mode Overrides */
@@ -170,14 +180,14 @@
             box-shadow: 0 8px 32px 0 rgba(255, 40, 0, 0.1);
         }
         .dark .glass-lamborghini {
-            background: linear-gradient(145deg, rgba(40, 30, 10, 0.7), rgba(20, 20, 20, 0.8));
-            border-left: 4px solid #ffb900;
-            box-shadow: 0 8px 32px 0 rgba(255, 185, 0, 0.1);
+            background: linear-gradient(145deg, rgba(20, 40, 10, 0.7), rgba(20, 20, 20, 0.8));
+            border-left: 4px solid #84cc16;
+            box-shadow: 0 8px 32px 0 rgba(132, 204, 22, 0.15);
         }
         .dark .glass-pagani {
-            background: linear-gradient(145deg, rgba(10, 20, 40, 0.7), rgba(20, 20, 20, 0.8));
-            border-left: 4px solid #4b6cb7;
-            box-shadow: 0 8px 32px 0 rgba(163, 163, 163, 0.1);
+            background: linear-gradient(145deg, rgba(30, 10, 40, 0.7), rgba(20, 20, 20, 0.8));
+            border-left: 4px solid #8b5cf6;
+            box-shadow: 0 8px 32px 0 rgba(139, 92, 246, 0.15);
         }
         .dark .glass-bugatti {
             background: linear-gradient(145deg, rgba(0, 20, 40, 0.7), rgba(20, 20, 20, 0.8));
@@ -199,6 +209,21 @@
             border-color: rgba(255, 255, 255, 0.3);
         }
         
+        /* Cinematic Intro Animation */
+        @keyframes systemsCheck {
+            from { opacity: 0; transform: translateY(20px); filter: blur(10px); }
+            to { opacity: 1; transform: translateY(0); filter: blur(0); }
+        }
+        .animate-intro {
+            opacity: 0; /* Start hidden */
+            animation: systemsCheck 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+
+        /* Audio Reactive Pulse */
+        .audio-glow {
+            transition: filter 0.05s ease, stroke-width 0.05s ease, drop-shadow 0.05s ease;
+        }
+
         /* Start Engine Button Pulse */
         .btn-start:active { transform: scale(0.90); }
         .btn-start.running {
@@ -313,6 +338,39 @@
         .circular-chart { display: block; margin: 0 auto; max-width: 100%; max-height: 250px; }
         .circle-bg { fill: none; stroke: currentColor; opacity: 0.1; stroke-width: 3; }
         .circle { fill: none; stroke-width: 3; stroke-linecap: round; transition: stroke-dasharray 1s ease-out; }
+
+        /* Checkbox Custom */
+        .custom-checkbox input:checked + div {
+            background-color: #10b981;
+            border-color: #10b981;
+        }
+        .custom-checkbox input:checked + div svg {
+            display: block;
+        }
+        
+        /* New Compare Bar Styles */
+        .compare-slot {
+            width: 12px; height: 12px; border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.5);
+        }
+        .compare-slot.filled {
+            background: #10b981;
+            box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+        }
+        .btn-launch-vs {
+            background: rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.5);
+            cursor: not-allowed;
+        }
+        .btn-launch-vs.ready {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+            animation: pulse-glow 2s infinite;
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col bg-gray-100 dark:bg-[#050505] text-slate-900 dark:text-[#f0f0f0] relative overflow-x-hidden selection:bg-red-600 selection:text-white">
@@ -321,6 +379,39 @@
     <div class="orb orb-1"></div>
     <div class="orb orb-2"></div>
     <div class="orb orb-3"></div>
+
+    <!-- Redesigned Comparison Sticky Bar -->
+    <div id="compare-bar" class="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-[60] glass bg-black/90 backdrop-blur-xl rounded-full hidden flex items-center p-2 pl-6 gap-6 shadow-2xl border border-white/10 transition-all duration-300 translate-y-24 opacity-0">
+        <!-- Visual Indicators -->
+        <div class="flex gap-2">
+            <div id="slot-1" class="compare-slot"></div>
+            <div id="slot-2" class="compare-slot"></div>
+        </div>
+        
+        <div class="h-6 w-[1px] bg-white/10"></div>
+
+        <!-- Action Button -->
+        <button onclick="openCompareModal()" id="btn-compare-action" class="btn-launch-vs px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all transform active:scale-95 whitespace-nowrap" disabled>
+            Launch VS
+        </button>
+        
+        <!-- Close/Clear -->
+        <button onclick="clearCompare()" class="w-8 h-8 rounded-full hover:bg-white/10 flex items-center justify-center text-gray-500 hover:text-white transition-colors -ml-2">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+    </div>
+
+    <!-- Comparison Modal -->
+    <div id="compare-modal" class="fixed inset-0 z-[70] bg-black/90 backdrop-blur-sm hidden flex items-center justify-center p-4 opacity-0 transition-opacity duration-300">
+        <div class="glass w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-2xl relative border border-white/10 bg-[#111]">
+            <button onclick="closeCompareModal()" class="absolute top-4 right-4 text-white/50 hover:text-white transition-colors z-10">
+                <i class="fa-solid fa-xmark text-2xl"></i>
+            </button>
+            <div id="compare-content" class="p-6 md:p-10">
+                <!-- Content injected via JS -->
+            </div>
+        </div>
+    </div>
 
     <!-- Navbar -->
     <nav class="glass sticky top-0 z-50 border-b border-white/20 dark:border-white/5 backdrop-blur-xl">
@@ -384,10 +475,10 @@
         
         <!-- Dashboard Stats -->
         <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 mb-8">
-            <div class="glass p-4 rounded-xl border-l-4 border-red-600 flex flex-col justify-between group relative overflow-hidden h-24 md:h-auto">
+            <div id="card-total" class="glass p-4 rounded-xl border-l-4 border-gray-500 flex flex-col justify-between group relative overflow-hidden h-24 md:h-auto transition-colors duration-500">
                 <!-- Brightened Icon -->
                 <div class="absolute right-0 top-0 p-3 opacity-60 group-hover:opacity-80 transition-opacity">
-                    <div class="text-4xl md:text-5xl filter brightness-110 drop-shadow-md">🏎️</div>
+                    <div class="text-5xl md:text-6xl filter brightness-110 drop-shadow-md transition-all duration-500" id="stat-total-icon">🏎️</div>
                 </div>
                 <div class="text-gray-500 dark:text-gray-400 text-[10px] uppercase tracking-widest font-bold mb-1">Total Models</div>
                 <div class="text-3xl md:text-4xl font-racing text-gray-900 dark:text-white" id="stat-total">0</div>
@@ -400,9 +491,15 @@
                 <div class="text-gray-500 dark:text-gray-400 text-[10px] uppercase tracking-widest font-bold mb-1">Active</div>
                 <div class="text-3xl md:text-4xl font-racing text-emerald-500 dark:text-emerald-400" id="stat-active">0</div>
             </div>
-            <div class="glass p-4 rounded-xl border-l-4 border-blue-500 flex flex-col justify-between h-24 md:h-auto">
-                <div class="text-gray-500 dark:text-gray-400 text-[10px] uppercase tracking-widest font-bold mb-1">Brands</div>
-                <div class="text-3xl md:text-4xl font-racing text-blue-500 dark:text-blue-400" id="stat-brands">5</div>
+            <div id="card-avg" class="glass p-4 rounded-xl border-l-4 border-gray-500 flex flex-col justify-between h-24 md:h-auto relative overflow-hidden group transition-colors duration-500">
+                <div class="absolute right-0 top-0 p-3 opacity-20 group-hover:opacity-40 transition-opacity">
+                    <i id="stat-avg-icon" class="fa-solid fa-flag-checkered text-5xl transition-colors duration-500"></i>
+                </div>
+                <div class="text-gray-500 dark:text-gray-400 text-[10px] uppercase tracking-widest font-bold mb-1">Avg 0-60</div>
+                <div class="text-3xl md:text-4xl font-racing text-gray-900 dark:text-white flex items-baseline gap-1" id="stat-avg-value-container">
+                    <span id="stat-avg-accel">0.00</span>
+                    <span class="text-sm font-sans font-bold text-gray-500">s</span>
+                </div>
             </div>
         </div>
 
@@ -451,10 +548,10 @@
     <footer class="fixed bottom-0 left-0 w-full glass border-t border-white/20 dark:border-white/10 z-50 backdrop-blur-md">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-8 flex items-center justify-between text-[10px] font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide">
             <div>
-                &copy; 2026 <a href="https://aimaverick.me" target="_blank" class="hover:text-white transition-colors">@amsubhzd</a>
+                &copy; 2026 <a href="https://aimaverick.me" target="_blank" class="hover:text-gray-900 dark:hover:text-white transition-colors">@amsubhzd</a>
             </div>
             <div>
-                Designed by <span class="text-white font-bold">AIMaverick</span>
+                Designed by <span class="text-gray-900 dark:text-white font-bold">AIMaverick</span>
             </div>
         </div>
     </footer>
@@ -462,73 +559,73 @@
     <!-- Data Injection with Specs -->
     <script id="car-data" type="application/json">
     [
-        {"name": "488 GTB", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/488-gtb", "cat": "Sport", "body": "Coupe", "cyl": "V8", "hp": 661, "accel": "3.0s", "launch": "2015-03-01", "eol": "2019-12-31"},
-        {"name": "488 Spider", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/488-spider", "cat": "Sport", "body": "Spider", "cyl": "V8", "hp": 661, "accel": "3.0s", "launch": "2015-09-01", "eol": "2019-12-31"},
-        {"name": "F12tdf", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/f12tdf", "cat": "GT", "body": "Coupe", "cyl": "V12", "hp": 769, "accel": "2.9s", "launch": "2015-10-01", "eol": "2017-12-31"},
-        {"name": "GTC4Lusso", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/gtc4lusso", "cat": "GT", "body": "Shooting Brake", "cyl": "V12", "hp": 680, "accel": "3.4s", "launch": "2016-03-01", "eol": "2020-08-31"},
-        {"name": "GTC4Lusso T", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/gtc4lusso-t", "cat": "GT", "body": "Shooting Brake", "cyl": "V8", "hp": 602, "accel": "3.5s", "launch": "2016-09-01", "eol": "2020-08-31"},
-        {"name": "LaFerrari Aperta", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/laferrari-aperta", "cat": "Hypercar", "body": "Roadster", "cyl": "V12", "hp": 950, "accel": "2.4s", "launch": "2016-09-01", "eol": "2018-12-31"},
-        {"name": "J50", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/j50", "cat": "Sport", "body": "Roadster", "cyl": "V8", "hp": 681, "accel": "3.0s", "launch": "2016-12-13", "eol": "2017-12-31"},
-        {"name": "812 Superfast", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/812-superfast", "cat": "GT", "body": "Coupe", "cyl": "V12", "hp": 789, "accel": "2.9s", "launch": "2017-03-01", "eol": "2024-05-01"},
-        {"name": "Portofino", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/portofino", "cat": "GT", "body": "Spider", "cyl": "V8", "hp": 591, "accel": "3.5s", "launch": "2017-09-01", "eol": "2021-12-31"},
-        {"name": "488 Pista", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/488-pista", "cat": "Sport", "body": "Coupe", "cyl": "V8", "hp": 710, "accel": "2.8s", "launch": "2018-03-01", "eol": "2020-12-31"},
-        {"name": "488 Pista Spider", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/488-pista-spider", "cat": "Sport", "body": "Spider", "cyl": "V8", "hp": 710, "accel": "2.85s", "launch": "2018-08-26", "eol": "2020-12-31"},
-        {"name": "Monza SP1/SP2", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/monza-sp1", "cat": "Icona", "body": "Speedster", "cyl": "V12", "hp": 799, "accel": "2.9s", "launch": "2018-09-01", "eol": "2022-12-31"},
-        {"name": "F8 Tributo", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/f8-tributo", "cat": "Sport", "body": "Coupe", "cyl": "V8", "hp": 710, "accel": "2.9s", "launch": "2019-03-01", "eol": "2023-04-01"},
-        {"name": "F8 Spider", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/f8-spider", "cat": "Sport", "body": "Spider", "cyl": "V8", "hp": 710, "accel": "2.9s", "launch": "2019-09-01", "eol": "2023-04-01"},
-        {"name": "SF90 Stradale", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/sf90-stradale", "cat": "Hypercar", "body": "Coupe", "cyl": "V8", "hp": 986, "accel": "2.5s", "launch": "2019-05-29", "eol": null},
-        {"name": "812 GTS", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/812-gts", "cat": "GT", "body": "Spider", "cyl": "V12", "hp": 789, "accel": "3.0s", "launch": "2019-09-01", "eol": "2024-05-01"},
-        {"name": "Roma", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/roma", "cat": "GT", "body": "Coupe", "cyl": "V8", "hp": 612, "accel": "3.4s", "launch": "2019-11-14", "eol": null},
-        {"name": "Portofino M", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/portofino-m", "cat": "GT", "body": "Spider", "cyl": "V8", "hp": 612, "accel": "3.4s", "launch": "2020-09-01", "eol": "2023-12-31"},
-        {"name": "SF90 Spider", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/sf90-spider", "cat": "Hypercar", "body": "Spider", "cyl": "V8", "hp": 986, "accel": "2.5s", "launch": "2020-11-12", "eol": null},
-        {"name": "812 Competizione", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/812-competizione", "cat": "GT", "body": "Coupe", "cyl": "V12", "hp": 819, "accel": "2.85s", "launch": "2021-05-05", "eol": "2023-12-31"},
-        {"name": "812 Competizione A", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/812-competizione-a", "cat": "GT", "body": "Targa", "cyl": "V12", "hp": 819, "accel": "2.85s", "launch": "2021-05-05", "eol": "2023-12-31"},
-        {"name": "296 GTB", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/296-gtb", "cat": "Sport", "body": "Coupe", "cyl": "V6", "hp": 819, "accel": "2.9s", "launch": "2021-06-24", "eol": null},
-        {"name": "Daytona SP3", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/daytona-sp3", "cat": "Icona", "body": "Targa", "cyl": "V12", "hp": 829, "accel": "2.85s", "launch": "2021-11-20", "eol": null},
-        {"name": "296 GTS", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/296-gts", "cat": "Sport", "body": "Spider", "cyl": "V6", "hp": 819, "accel": "2.9s", "launch": "2022-04-19", "eol": null},
-        {"name": "Purosangue", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/purosangue", "cat": "GT", "body": "SUV", "cyl": "V12", "hp": 715, "accel": "3.3s", "launch": "2022-09-13", "eol": null},
-        {"name": "Roma Spider", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/roma-spider", "cat": "GT", "body": "Spider", "cyl": "V8", "hp": 612, "accel": "3.4s", "launch": "2023-03-16", "eol": null},
-        {"name": "SF90 XX Stradale", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/sf90-xx-stradale", "cat": "Hypercar", "body": "Coupe", "cyl": "V8", "hp": 1016, "accel": "2.3s", "launch": "2023-06-29", "eol": null},
-        {"name": "SF90 XX Spider", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/sf90-xx-spider", "cat": "Hypercar", "body": "Spider", "cyl": "V8", "hp": 1016, "accel": "2.3s", "launch": "2023-06-29", "eol": null},
-        {"name": "12Cilindri", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/12cilindri", "cat": "GT", "body": "Coupe", "cyl": "V12", "hp": 819, "accel": "2.9s", "launch": "2024-05-03", "eol": null},
-        {"name": "12Cilindri Spider", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/12cilindri-spider", "cat": "GT", "body": "Spider", "cyl": "V12", "hp": 819, "accel": "2.9s", "launch": "2024-05-03", "eol": null},
-        {"name": "Amalfi", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/ferrari-amalfi", "cat": "GT", "body": "Coupe", "cyl": "V6", "hp": 700, "accel": "3.1s", "launch": "2025-06-01", "eol": null},
-        {"name": "F80", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/f80", "cat": "Hypercar", "body": "Coupe", "cyl": "V6", "hp": 1184, "accel": "2.15s", "launch": "2025-10-01", "eol": null},
+        {"name": "488 GTB", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/488-gtb", "cat": "Sport", "body": "Coupe", "cyl": "V8", "hp": 661, "accel": "3.0s", "launch": "2015-03-01", "eol": "2019-12-31", "torque": "760 Nm", "weight": "1370 kg"},
+        {"name": "488 Spider", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/488-spider", "cat": "Sport", "body": "Spider", "cyl": "V8", "hp": 661, "accel": "3.0s", "launch": "2015-09-01", "eol": "2019-12-31", "torque": "760 Nm", "weight": "1420 kg"},
+        {"name": "F12tdf", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/f12tdf", "cat": "GT", "body": "Coupe", "cyl": "V12", "hp": 769, "accel": "2.9s", "launch": "2015-10-01", "eol": "2017-12-31", "torque": "705 Nm", "weight": "1415 kg"},
+        {"name": "GTC4Lusso", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/gtc4lusso", "cat": "GT", "body": "Shooting Brake", "cyl": "V12", "hp": 680, "accel": "3.4s", "launch": "2016-03-01", "eol": "2020-08-31", "torque": "697 Nm", "weight": "1790 kg"},
+        {"name": "GTC4Lusso T", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/gtc4lusso-t", "cat": "GT", "body": "Shooting Brake", "cyl": "V8", "hp": 602, "accel": "3.5s", "launch": "2016-09-01", "eol": "2020-08-31", "torque": "760 Nm", "weight": "1740 kg"},
+        {"name": "LaFerrari Aperta", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/laferrari-aperta", "cat": "Hypercar", "body": "Roadster", "cyl": "V12", "hp": 950, "accel": "2.4s", "launch": "2016-09-01", "eol": "2018-12-31", "torque": "900 Nm", "weight": "1345 kg"},
+        {"name": "J50", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/j50", "cat": "Sport", "body": "Roadster", "cyl": "V8", "hp": 681, "accel": "3.0s", "launch": "2016-12-13", "eol": "2017-12-31", "torque": "760 Nm", "weight": "1350 kg"},
+        {"name": "812 Superfast", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/812-superfast", "cat": "GT", "body": "Coupe", "cyl": "V12", "hp": 789, "accel": "2.9s", "launch": "2017-03-01", "eol": "2024-05-01", "torque": "718 Nm", "weight": "1525 kg"},
+        {"name": "Portofino", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/portofino", "cat": "GT", "body": "Spider", "cyl": "V8", "hp": 591, "accel": "3.5s", "launch": "2017-09-01", "eol": "2021-12-31", "torque": "760 Nm", "weight": "1664 kg"},
+        {"name": "488 Pista", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/488-pista", "cat": "Sport", "body": "Coupe", "cyl": "V8", "hp": 710, "accel": "2.8s", "launch": "2018-03-01", "eol": "2020-12-31", "torque": "770 Nm", "weight": "1385 kg"},
+        {"name": "488 Pista Spider", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/488-pista-spider", "cat": "Sport", "body": "Spider", "cyl": "V8", "hp": 710, "accel": "2.85s", "launch": "2018-08-26", "eol": "2020-12-31", "torque": "770 Nm", "weight": "1485 kg"},
+        {"name": "Monza SP1/SP2", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/monza-sp1", "cat": "Icona", "body": "Speedster", "cyl": "V12", "hp": 799, "accel": "2.9s", "launch": "2018-09-01", "eol": "2022-12-31", "torque": "719 Nm", "weight": "1500 kg"},
+        {"name": "F8 Tributo", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/f8-tributo", "cat": "Sport", "body": "Coupe", "cyl": "V8", "hp": 710, "accel": "2.9s", "launch": "2019-03-01", "eol": "2023-04-01", "torque": "770 Nm", "weight": "1435 kg"},
+        {"name": "F8 Spider", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/f8-spider", "cat": "Sport", "body": "Spider", "cyl": "V8", "hp": 710, "accel": "2.9s", "launch": "2019-09-01", "eol": "2023-04-01", "torque": "770 Nm", "weight": "1505 kg"},
+        {"name": "SF90 Stradale", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/sf90-stradale", "cat": "Hypercar", "body": "Coupe", "cyl": "V8", "hp": 986, "accel": "2.5s", "launch": "2019-05-29", "eol": null, "torque": "800 Nm", "weight": "1570 kg"},
+        {"name": "812 GTS", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/812-gts", "cat": "GT", "body": "Spider", "cyl": "V12", "hp": 789, "accel": "3.0s", "launch": "2019-09-01", "eol": "2024-05-01", "torque": "718 Nm", "weight": "1600 kg"},
+        {"name": "Roma", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/roma", "cat": "GT", "body": "Coupe", "cyl": "V8", "hp": 612, "accel": "3.4s", "launch": "2019-11-14", "eol": null, "torque": "760 Nm", "weight": "1570 kg"},
+        {"name": "Portofino M", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/portofino-m", "cat": "GT", "body": "Spider", "cyl": "V8", "hp": 612, "accel": "3.4s", "launch": "2020-09-01", "eol": "2023-12-31", "torque": "760 Nm", "weight": "1664 kg"},
+        {"name": "SF90 Spider", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/sf90-spider", "cat": "Hypercar", "body": "Spider", "cyl": "V8", "hp": 986, "accel": "2.5s", "launch": "2020-11-12", "eol": null, "torque": "800 Nm", "weight": "1670 kg"},
+        {"name": "812 Competizione", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/812-competizione", "cat": "GT", "body": "Coupe", "cyl": "V12", "hp": 819, "accel": "2.85s", "launch": "2021-05-05", "eol": "2023-12-31", "torque": "692 Nm", "weight": "1487 kg"},
+        {"name": "812 Competizione A", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/812-competizione-a", "cat": "GT", "body": "Targa", "cyl": "V12", "hp": 819, "accel": "2.85s", "launch": "2021-05-05", "eol": "2023-12-31", "torque": "692 Nm", "weight": "1562 kg"},
+        {"name": "296 GTB", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/296-gtb", "cat": "Sport", "body": "Coupe", "cyl": "V6", "hp": 819, "accel": "2.9s", "launch": "2021-06-24", "eol": null, "torque": "740 Nm", "weight": "1470 kg"},
+        {"name": "Daytona SP3", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/daytona-sp3", "cat": "Icona", "body": "Targa", "cyl": "V12", "hp": 829, "accel": "2.85s", "launch": "2021-11-20", "eol": null, "torque": "697 Nm", "weight": "1485 kg"},
+        {"name": "296 GTS", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/296-gts", "cat": "Sport", "body": "Spider", "cyl": "V6", "hp": 819, "accel": "2.9s", "launch": "2022-04-19", "eol": null, "torque": "740 Nm", "weight": "1540 kg"},
+        {"name": "Purosangue", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/purosangue", "cat": "GT", "body": "SUV", "cyl": "V12", "hp": 715, "accel": "3.3s", "launch": "2022-09-13", "eol": null, "torque": "716 Nm", "weight": "2033 kg"},
+        {"name": "Roma Spider", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/roma-spider", "cat": "GT", "body": "Spider", "cyl": "V8", "hp": 612, "accel": "3.4s", "launch": "2023-03-16", "eol": null, "torque": "760 Nm", "weight": "1655 kg"},
+        {"name": "SF90 XX Stradale", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/sf90-xx-stradale", "cat": "Hypercar", "body": "Coupe", "cyl": "V8", "hp": 1016, "accel": "2.3s", "launch": "2023-06-29", "eol": null, "torque": "804 Nm", "weight": "1560 kg"},
+        {"name": "SF90 XX Spider", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/sf90-xx-spider", "cat": "Hypercar", "body": "Spider", "cyl": "V8", "hp": 1016, "accel": "2.3s", "launch": "2023-06-29", "eol": null, "torque": "804 Nm", "weight": "1660 kg"},
+        {"name": "12Cilindri", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/12cilindri", "cat": "GT", "body": "Coupe", "cyl": "V12", "hp": 819, "accel": "2.9s", "launch": "2024-05-03", "eol": null, "torque": "678 Nm", "weight": "1560 kg"},
+        {"name": "12Cilindri Spider", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/12cilindri-spider", "cat": "GT", "body": "Spider", "cyl": "V12", "hp": 819, "accel": "2.9s", "launch": "2024-05-03", "eol": null, "torque": "678 Nm", "weight": "1620 kg"},
+        {"name": "Amalfi", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/ferrari-amalfi", "cat": "GT", "body": "Coupe", "cyl": "V6", "hp": 700, "accel": "3.1s", "launch": "2025-06-01", "eol": null, "torque": "700 Nm", "weight": "1500 kg"},
+        {"name": "F80", "brand": "Ferrari", "url": "https://www.ferrari.com/en-US/auto/f80", "cat": "Hypercar", "body": "Coupe", "cyl": "V6", "hp": 1184, "accel": "2.15s", "launch": "2025-10-01", "eol": null, "torque": "850 Nm", "weight": "1525 kg"},
         
-        {"name": "Huracán", "brand": "Lamborghini", "url": "https://www.lamborghini.com/en-en/models/huracan", "cat": "Sport", "body": "Coupe", "cyl": "V10", "hp": 631, "accel": "2.9s", "launch": "2014-01-01", "eol": "2024-12-31"},
-        {"name": "Huracán Spyder", "brand": "Lamborghini", "url": "https://www.lamborghini.com/en-en/models/huracan", "cat": "Sport", "body": "Spider", "cyl": "V10", "hp": 631, "accel": "3.1s", "launch": "2015-09-01", "eol": "2024-12-31"},
-        {"name": "Centenario", "brand": "Lamborghini", "url": "https://www.lamborghini.com/en-en/history/centenario-coupe", "cat": "Icona", "body": "Coupe", "cyl": "V12", "hp": 759, "accel": "2.8s", "launch": "2016-01-01", "eol": "2017-12-31"},
-        {"name": "Urus", "brand": "Lamborghini", "url": "https://www.lamborghini.com/en-en/models/urus", "cat": "SUV", "body": "SUV", "cyl": "V8", "hp": 641, "accel": "3.6s", "launch": "2018-01-01", "eol": null},
-        {"name": "Sián FKP 37", "brand": "Lamborghini", "url": "https://www.lamborghini.com/en-en/models/sian-fkp-37", "cat": "Hypercar", "body": "Coupe", "cyl": "V12", "hp": 808, "accel": "2.8s", "launch": "2019-09-01", "eol": "2020-12-31"},
-        {"name": "Sián Roadster", "brand": "Lamborghini", "url": "https://www.lamborghini.com/en-en/models/sian-roadster", "cat": "Hypercar", "body": "Roadster", "cyl": "V12", "hp": 808, "accel": "2.9s", "launch": "2020-07-01", "eol": "2021-12-31"},
-        {"name": "Countach LPI 800-4", "brand": "Lamborghini", "url": "https://www.lamborghini.com/en-en/models/countach-lpi-800-4", "cat": "Icona", "body": "Coupe", "cyl": "V12", "hp": 803, "accel": "2.8s", "launch": "2021-08-13", "eol": "2022-12-31"},
-        {"name": "Revuelto", "brand": "Lamborghini", "url": "https://www.lamborghini.com/en-en/models/revuelto", "cat": "Hypercar", "body": "Coupe", "cyl": "V12", "hp": 1001, "accel": "2.5s", "launch": "2023-03-01", "eol": null},
-        {"name": "Temerario", "brand": "Lamborghini", "url": "https://www.lamborghini.com/en-en/models/temerario", "cat": "Sport", "body": "Coupe", "cyl": "V8", "hp": 907, "accel": "2.7s", "launch": "2024-08-01", "eol": null},
+        {"name": "Huracán", "brand": "Lamborghini", "url": "https://www.lamborghini.com/en-en/models/huracan", "cat": "Sport", "body": "Coupe", "cyl": "V10", "hp": 631, "accel": "2.9s", "launch": "2014-01-01", "eol": "2024-12-31", "torque": "600 Nm", "weight": "1422 kg"},
+        {"name": "Huracán Spyder", "brand": "Lamborghini", "url": "https://www.lamborghini.com/en-en/models/huracan", "cat": "Sport", "body": "Spider", "cyl": "V10", "hp": 631, "accel": "3.1s", "launch": "2015-09-01", "eol": "2024-12-31", "torque": "600 Nm", "weight": "1542 kg"},
+        {"name": "Centenario", "brand": "Lamborghini", "url": "https://www.lamborghini.com/en-en/history/centenario-coupe", "cat": "Icona", "body": "Coupe", "cyl": "V12", "hp": 759, "accel": "2.8s", "launch": "2016-01-01", "eol": "2017-12-31", "torque": "690 Nm", "weight": "1520 kg"},
+        {"name": "Urus", "brand": "Lamborghini", "url": "https://www.lamborghini.com/en-en/models/urus", "cat": "SUV", "body": "SUV", "cyl": "V8", "hp": 641, "accel": "3.6s", "launch": "2018-01-01", "eol": null, "torque": "850 Nm", "weight": "2200 kg"},
+        {"name": "Sián FKP 37", "brand": "Lamborghini", "url": "https://www.lamborghini.com/en-en/models/sian-fkp-37", "cat": "Hypercar", "body": "Coupe", "cyl": "V12", "hp": 808, "accel": "2.8s", "launch": "2019-09-01", "eol": "2020-12-31", "torque": "720 Nm", "weight": "1600 kg"},
+        {"name": "Sián Roadster", "brand": "Lamborghini", "url": "https://www.lamborghini.com/en-en/models/sian-roadster", "cat": "Hypercar", "body": "Roadster", "cyl": "V12", "hp": 808, "accel": "2.9s", "launch": "2020-07-01", "eol": "2021-12-31", "torque": "720 Nm", "weight": "1650 kg"},
+        {"name": "Countach LPI 800-4", "brand": "Lamborghini", "url": "https://www.lamborghini.com/en-en/models/countach-lpi-800-4", "cat": "Icona", "body": "Coupe", "cyl": "V12", "hp": 803, "accel": "2.8s", "launch": "2021-08-13", "eol": "2022-12-31", "torque": "725 Nm", "weight": "1595 kg"},
+        {"name": "Revuelto", "brand": "Lamborghini", "url": "https://www.lamborghini.com/en-en/models/revuelto", "cat": "Hypercar", "body": "Coupe", "cyl": "V12", "hp": 1001, "accel": "2.5s", "launch": "2023-03-01", "eol": null, "torque": "725 Nm", "weight": "1772 kg"},
+        {"name": "Temerario", "brand": "Lamborghini", "url": "https://www.lamborghini.com/en-en/models/temerario", "cat": "Sport", "body": "Coupe", "cyl": "V8", "hp": 907, "accel": "2.7s", "launch": "2024-08-01", "eol": null, "torque": "730 Nm", "weight": "1690 kg"},
 
-        {"name": "Huayra BC", "brand": "Pagani", "url": "https://www.pagani.com/huayra-bc/", "cat": "Hypercar", "body": "Coupe", "cyl": "V12", "hp": 745, "accel": "2.8s", "launch": "2016-01-01", "eol": "2019-12-31"},
-        {"name": "Huayra Roadster", "brand": "Pagani", "url": "https://www.pagani.com/huayra-roadster/", "cat": "Hypercar", "body": "Roadster", "cyl": "V12", "hp": 754, "accel": "2.8s", "launch": "2017-01-01", "eol": "2020-12-31"},
-        {"name": "Huayra Roadster BC", "brand": "Pagani", "url": "https://www.pagani.com/huayra-roadster-bc/", "cat": "Hypercar", "body": "Roadster", "cyl": "V12", "hp": 791, "accel": "2.5s", "launch": "2019-07-31", "eol": "2021-12-31"},
-        {"name": "Imola", "brand": "Pagani", "url": "https://www.pagani.com/imola/", "cat": "Hypercar", "body": "Coupe", "cyl": "V12", "hp": 827, "accel": "2.5s", "launch": "2020-02-14", "eol": "2021-12-31"},
-        {"name": "Huayra R", "brand": "Pagani", "url": "https://www.pagani.com/huayra-r/", "cat": "Track", "body": "Coupe", "cyl": "V12", "hp": 838, "accel": "2.5s", "launch": "2021-03-18", "eol": "2022-12-31"},
-        {"name": "Huayra Codalunga", "brand": "Pagani", "url": "https://www.pagani.com/huayra-codalunga/", "cat": "Icona", "body": "Coupe", "cyl": "V12", "hp": 840, "accel": "2.8s", "launch": "2022-06-16", "eol": "2023-12-31"},
-        {"name": "Utopia", "brand": "Pagani", "url": "https://www.pagani.com/pagani-utopia/", "cat": "Hypercar", "body": "Coupe", "cyl": "V12", "hp": 852, "accel": "2.7s", "launch": "2022-09-12", "eol": null},
-        {"name": "Utopia Roadster", "brand": "Pagani", "url": "https://www.pagani.com/utopia-roadster/", "cat": "Hypercar", "body": "Roadster", "cyl": "V12", "hp": 852, "accel": "2.7s", "launch": "2024-07-30", "eol": null},
+        {"name": "Huayra BC", "brand": "Pagani", "url": "https://www.pagani.com/huayra-bc/", "cat": "Hypercar", "body": "Coupe", "cyl": "V12", "hp": 745, "accel": "2.8s", "launch": "2016-01-01", "eol": "2019-12-31", "torque": "1000 Nm", "weight": "1218 kg"},
+        {"name": "Huayra Roadster", "brand": "Pagani", "url": "https://www.pagani.com/huayra-roadster/", "cat": "Hypercar", "body": "Roadster", "cyl": "V12", "hp": 754, "accel": "2.8s", "launch": "2017-01-01", "eol": "2020-12-31", "torque": "1000 Nm", "weight": "1280 kg"},
+        {"name": "Huayra Roadster BC", "brand": "Pagani", "url": "https://www.pagani.com/huayra-roadster-bc/", "cat": "Hypercar", "body": "Roadster", "cyl": "V12", "hp": 791, "accel": "2.5s", "launch": "2019-07-31", "eol": "2021-12-31", "torque": "1050 Nm", "weight": "1250 kg"},
+        {"name": "Imola", "brand": "Pagani", "url": "https://www.pagani.com/imola/", "cat": "Hypercar", "body": "Coupe", "cyl": "V12", "hp": 827, "accel": "2.5s", "launch": "2020-02-14", "eol": "2021-12-31", "torque": "1100 Nm", "weight": "1246 kg"},
+        {"name": "Huayra R", "brand": "Pagani", "url": "https://www.pagani.com/huayra-r/", "cat": "Track", "body": "Coupe", "cyl": "V12", "hp": 838, "accel": "2.5s", "launch": "2021-03-18", "eol": "2022-12-31", "torque": "750 Nm", "weight": "1050 kg"},
+        {"name": "Huayra Codalunga", "brand": "Pagani", "url": "https://www.pagani.com/huayra-codalunga/", "cat": "Icona", "body": "Coupe", "cyl": "V12", "hp": 840, "accel": "2.8s", "launch": "2022-06-16", "eol": "2023-12-31", "torque": "1100 Nm", "weight": "1280 kg"},
+        {"name": "Utopia", "brand": "Pagani", "url": "https://www.pagani.com/pagani-utopia/", "cat": "Hypercar", "body": "Coupe", "cyl": "V12", "hp": 852, "accel": "2.7s", "launch": "2022-09-12", "eol": null, "torque": "1100 Nm", "weight": "1280 kg"},
+        {"name": "Utopia Roadster", "brand": "Pagani", "url": "https://www.pagani.com/utopia-roadster/", "cat": "Hypercar", "body": "Roadster", "cyl": "V12", "hp": 852, "accel": "2.7s", "launch": "2024-07-30", "eol": null, "torque": "1100 Nm", "weight": "1280 kg"},
 
-        {"name": "Chiron", "brand": "Bugatti", "url": "https://www.bugatti.com/models/chiron/", "cat": "Hypercar", "body": "Coupe", "cyl": "W16", "hp": 1479, "accel": "2.4s", "launch": "2016-03-01", "eol": "2022-12-31"},
-        {"name": "Divo", "brand": "Bugatti", "url": "https://www.bugatti.com/models/divo/", "cat": "Hypercar", "body": "Coupe", "cyl": "W16", "hp": 1479, "accel": "2.4s", "launch": "2018-08-24", "eol": "2021-12-31"},
-        {"name": "La Voiture Noire", "brand": "Bugatti", "url": "https://www.bugatti.com/models/la-voiture-noire/", "cat": "One-off", "body": "Coupe", "cyl": "W16", "hp": 1479, "accel": "2.4s", "launch": "2019-03-01", "eol": "2019-12-31"},
-        {"name": "Centodieci", "brand": "Bugatti", "url": "https://www.bugatti.com/models/centodieci/", "cat": "Hypercar", "body": "Coupe", "cyl": "W16", "hp": 1578, "accel": "2.4s", "launch": "2019-08-16", "eol": "2022-12-31"},
-        {"name": "Chiron Super Sport", "brand": "Bugatti", "url": "https://www.bugatti.com/models/chiron-super-sport/", "cat": "Hypercar", "body": "Coupe", "cyl": "W16", "hp": 1578, "accel": "2.4s", "launch": "2021-06-08", "eol": "2022-12-31"},
-        {"name": "Bolide", "brand": "Bugatti", "url": "https://www.bugatti.com/models/bolide/", "cat": "Track", "body": "Coupe", "cyl": "W16", "hp": 1825, "accel": "2.17s", "launch": "2024-01-01", "eol": null},
-        {"name": "W16 Mistral", "brand": "Bugatti", "url": "https://www.bugatti.com/models/w16-mistral/", "cat": "Hypercar", "body": "Roadster", "cyl": "W16", "hp": 1578, "accel": "2.3s", "launch": "2022-08-19", "eol": null},
-        {"name": "Tourbillon", "brand": "Bugatti", "url": "https://www.bugatti.com/models/tourbillon/", "cat": "Hypercar", "body": "Coupe", "cyl": "V16", "hp": 1775, "accel": "2.0s", "launch": "2026-01-01", "eol": null},
+        {"name": "Chiron", "brand": "Bugatti", "url": "https://www.bugatti.com/models/chiron/", "cat": "Hypercar", "body": "Coupe", "cyl": "W16", "hp": 1479, "accel": "2.4s", "launch": "2016-03-01", "eol": "2022-12-31", "torque": "1600 Nm", "weight": "1995 kg"},
+        {"name": "Divo", "brand": "Bugatti", "url": "https://www.bugatti.com/models/divo/", "cat": "Hypercar", "body": "Coupe", "cyl": "W16", "hp": 1479, "accel": "2.4s", "launch": "2018-08-24", "eol": "2021-12-31", "torque": "1600 Nm", "weight": "1960 kg"},
+        {"name": "La Voiture Noire", "brand": "Bugatti", "url": "https://www.bugatti.com/models/la-voiture-noire/", "cat": "One-off", "body": "Coupe", "cyl": "W16", "hp": 1479, "accel": "2.4s", "launch": "2019-03-01", "eol": "2019-12-31", "torque": "1600 Nm", "weight": "1995 kg"},
+        {"name": "Centodieci", "brand": "Bugatti", "url": "https://www.bugatti.com/models/centodieci/", "cat": "Hypercar", "body": "Coupe", "cyl": "W16", "hp": 1578, "accel": "2.4s", "launch": "2019-08-16", "eol": "2022-12-31", "torque": "1600 Nm", "weight": "1975 kg"},
+        {"name": "Chiron Super Sport", "brand": "Bugatti", "url": "https://www.bugatti.com/models/chiron-super-sport/", "cat": "Hypercar", "body": "Coupe", "cyl": "W16", "hp": 1578, "accel": "2.4s", "launch": "2021-06-08", "eol": "2022-12-31", "torque": "1600 Nm", "weight": "1995 kg"},
+        {"name": "Bolide", "brand": "Bugatti", "url": "https://www.bugatti.com/models/bolide/", "cat": "Track", "body": "Coupe", "cyl": "W16", "hp": 1825, "accel": "2.17s", "launch": "2024-01-01", "eol": null, "torque": "1850 Nm", "weight": "1450 kg"},
+        {"name": "W16 Mistral", "brand": "Bugatti", "url": "https://www.bugatti.com/models/w16-mistral/", "cat": "Hypercar", "body": "Roadster", "cyl": "W16", "hp": 1578, "accel": "2.3s", "launch": "2022-08-19", "eol": null, "torque": "1600 Nm", "weight": "1995 kg"},
+        {"name": "Tourbillon", "brand": "Bugatti", "url": "https://www.bugatti.com/models/tourbillon/", "cat": "Hypercar", "body": "Coupe", "cyl": "V16", "hp": 1775, "accel": "2.0s", "launch": "2026-01-01", "eol": null, "torque": "1000 Nm", "weight": "1995 kg"},
 
-        {"name": "Agera RS", "brand": "Koenigsegg", "url": "https://www.koenigsegg.com/model/agera-rs", "cat": "Hypercar", "body": "Targa", "cyl": "V8", "hp": 1160, "accel": "2.8s", "launch": "2015-01-01", "eol": "2018-12-31"},
-        {"name": "Regera", "brand": "Koenigsegg", "url": "https://www.koenigsegg.com/model/regera", "cat": "Hypercar", "body": "Targa", "cyl": "V8", "hp": 1500, "accel": "2.8s", "launch": "2016-01-01", "eol": "2022-12-31"},
-        {"name": "Jesko Attack", "brand": "Koenigsegg", "url": "https://www.koenigsegg.com/model/jesko-attack", "cat": "Hypercar", "body": "Targa", "cyl": "V8", "hp": 1280, "accel": "2.5s", "launch": "2019-03-01", "eol": null},
-        {"name": "Jesko Absolut", "brand": "Koenigsegg", "url": "https://www.koenigsegg.com/model/jesko-absolut", "cat": "Hypercar", "body": "Targa", "cyl": "V8", "hp": 1600, "accel": "2.5s", "launch": "2020-03-01", "eol": null},
-        {"name": "Gemera", "brand": "Koenigsegg", "url": "https://www.koenigsegg.com/model/gemera", "cat": "GT", "body": "Coupe", "cyl": "V8", "hp": 2300, "accel": "1.9s", "launch": "2020-03-01", "eol": null},
-        {"name": "CC850", "brand": "Koenigsegg", "url": "https://www.koenigsegg.com/model/cc850", "cat": "Hypercar", "body": "Targa", "cyl": "V8", "hp": 1385, "accel": "2.5s", "launch": "2022-08-19", "eol": null}
+        {"name": "Agera RS", "brand": "Koenigsegg", "url": "https://www.koenigsegg.com/model/agera-rs", "cat": "Hypercar", "body": "Targa", "cyl": "V8", "hp": 1160, "accel": "2.8s", "launch": "2015-01-01", "eol": "2018-12-31", "torque": "1280 Nm", "weight": "1395 kg"},
+        {"name": "Regera", "brand": "Koenigsegg", "url": "https://www.koenigsegg.com/model/regera", "cat": "Hypercar", "body": "Targa", "cyl": "V8", "hp": 1500, "accel": "2.8s", "launch": "2016-01-01", "eol": "2022-12-31", "torque": "2000 Nm", "weight": "1590 kg"},
+        {"name": "Jesko Attack", "brand": "Koenigsegg", "url": "https://www.koenigsegg.com/model/jesko-attack", "cat": "Hypercar", "body": "Targa", "cyl": "V8", "hp": 1280, "accel": "2.5s", "launch": "2019-03-01", "eol": null, "torque": "1500 Nm", "weight": "1420 kg"},
+        {"name": "Jesko Absolut", "brand": "Koenigsegg", "url": "https://www.koenigsegg.com/model/jesko-absolut", "cat": "Hypercar", "body": "Targa", "cyl": "V8", "hp": 1600, "accel": "2.5s", "launch": "2020-03-01", "eol": null, "torque": "1500 Nm", "weight": "1390 kg"},
+        {"name": "Gemera", "brand": "Koenigsegg", "url": "https://www.koenigsegg.com/model/gemera", "cat": "GT", "body": "Coupe", "cyl": "V8", "hp": 2300, "accel": "1.9s", "launch": "2020-03-01", "eol": null, "torque": "2750 Nm", "weight": "1850 kg"},
+        {"name": "CC850", "brand": "Koenigsegg", "url": "https://www.koenigsegg.com/model/cc850", "cat": "Hypercar", "body": "Targa", "cyl": "V8", "hp": 1385, "accel": "2.5s", "launch": "2022-08-19", "eol": null, "torque": "1385 Nm", "weight": "1385 kg"}
     ]
     </script>
 
@@ -547,6 +644,14 @@
             return (launchYear <= maxWindow && endYear >= minWindow);
         });
 
+        // --- SORTING: Fastest Accel first, then HP ---
+        products.sort((a, b) => {
+            const accA = parseFloat(a.accel);
+            const accB = parseFloat(b.accel);
+            if (accA !== accB) return accA - accB; // Ascending accel (lower is better)
+            return b.hp - a.hp; // Descending hp (higher is better)
+        });
+
         const engines = ['V6', 'V8', 'V10', 'V12', 'V16', 'W16'];
         
         // --- STATE ---
@@ -555,11 +660,24 @@
         let currentEngine = 'all';
         let currentSearch = '';
         let showOnlyProduction = false;
+        let compareIds = new Set(); // Compare Feature
+        let isInitialLoad = true;   // Systems Check Feature
+
+        // --- COLORS ---
+        const brandColors = {
+            'Ferrari': '#ff2800',
+            'Lamborghini': '#84cc16', 
+            'Pagani': '#8b5cf6', 
+            'Bugatti': '#00b0f0',
+            'Koenigsegg': '#fbbf24',
+            'all': '#6b7280' // Gray-500 for neutral
+        };
 
         // --- AUDIO ENGINE (Procedural Fallback) ---
         const AudioContext = window.AudioContext || window.webkitAudioContext;
         let audioCtx;
         let activeOscillators = []; 
+        let vizAnimationId;
 
         function initAudio() {
             if (!audioCtx) {
@@ -576,12 +694,25 @@
             });
             activeOscillators = [];
             
+            // Clear visualization loop
+            if(vizAnimationId) cancelAnimationFrame(vizAnimationId);
+
+            // Reset Icons and State
             document.querySelectorAll('.active-engine').forEach(el => {
                 el.classList.remove('active-engine', 'running', 'revving');
                 const icon = el.querySelector('i');
                 if(icon) {
-                    icon.className = "fa-solid fa-power-off text-sm";
+                    icon.className = "fa-solid fa-key text-sm";
                     icon.parentElement.title = "Start Engine";
+                }
+                // Reset visualizer style
+                const card = el.closest('.glass');
+                const hpCircle = card.querySelector('.hp-circle');
+                if (hpCircle) {
+                    hpCircle.style.strokeWidth = '3px';
+                    hpCircle.style.filter = 'none';
+                    // Re-add transition classes when stopping
+                    hpCircle.classList.add('transition-all', 'duration-1000');
                 }
             });
             document.querySelectorAll('.animate-rumble').forEach(el => el.classList.remove('animate-rumble'));
@@ -596,6 +727,10 @@
             const noise = audioCtx.createBufferSource();
             const gain = audioCtx.createGain();
             const filter = audioCtx.createBiquadFilter();
+            
+            // Audio-Reactive: Add Analyser
+            const analyser = audioCtx.createAnalyser();
+            analyser.fftSize = 32; // Low resolution for simple thump visualization
             
             activeOscillators.push(osc);
             activeOscillators.push(noise);
@@ -649,7 +784,8 @@
 
             filter.type = 'lowpass';
             filter.connect(gain);
-            gain.connect(audioCtx.destination);
+            gain.connect(analyser); // Connect gain to analyser first
+            analyser.connect(audioCtx.destination); // Then to speakers
 
             osc.start(t);
             noise.start(t);
@@ -658,11 +794,14 @@
             
             osc.stop(t + (action==='rev'?0.6:4.0));
             noise.stop(t + (action==='rev'?0.6:4.0));
+
+            return analyser; // Return for visualization
         }
 
         function playEngineSound(btn, cyl) {
             const card = btn.closest('.glass');
             const icon = btn.querySelector('i');
+            const hpCircle = card.querySelector('.hp-circle');
             
             const isRunning = btn.classList.contains('active-engine');
 
@@ -672,15 +811,50 @@
                 icon.className = "fa-solid fa-gauge-high text-xs"; 
                 icon.parentElement.title = "Rev Engine";
                 
-                createEngineSound(cyl, 'start');
+                // Force remove animate-intro if it exists so card doesn't disappear
+                if (card.classList.contains('animate-intro')) {
+                    card.classList.remove('animate-intro');
+                }
+
+                // Remove transition so audio reaction is instant
+                if (hpCircle) hpCircle.classList.remove('transition-all', 'duration-1000');
+
+                const analyser = createEngineSound(cyl, 'start');
 
                 card.classList.add('animate-rumble');
-                // Animate Gauges logic here if needed
+                
+                // Visualizer Loop
+                const dataArray = new Uint8Array(analyser.frequencyBinCount);
+                const vizLoop = () => {
+                    analyser.getByteFrequencyData(dataArray);
+                    // Simple average of low frequencies for "kick"
+                    let sum = 0;
+                    for(let i=0; i<5; i++) sum += dataArray[i];
+                    const avg = sum / 5;
+                    
+                    if (hpCircle) {
+                        // Map audio level to visual props
+                        const scale = 1 + (avg / 255) * 0.5; 
+                        const glow = avg / 10;
+                        hpCircle.style.strokeWidth = (3 + (avg/30)) + 'px';
+                        hpCircle.style.filter = `drop-shadow(0 0 ${glow}px currentColor)`;
+                    }
+                    vizAnimationId = requestAnimationFrame(vizLoop);
+                };
+                vizLoop();
+                
+                // Stop shaking after 5 seconds
+                setTimeout(() => {
+                    if (card.classList.contains('animate-rumble')) {
+                        card.classList.remove('animate-rumble');
+                    }
+                }, 5000);
 
             } else {
                 btn.classList.add('revving');
                 setTimeout(() => btn.classList.remove('revving'), 300);
 
+                // Create rev sound (no new viz loop needed, main loop captures updated gain)
                 createEngineSound(cyl, 'rev');
 
                 card.classList.remove('animate-rumble');
@@ -688,9 +862,307 @@
                 card.classList.add('animate-rev');
                 setTimeout(() => {
                     card.classList.remove('animate-rev');
-                    card.classList.add('animate-rumble');
+                    if (btn.classList.contains('running')) {
+                         card.classList.add('animate-rumble');
+                    }
                 }, 500);
             }
+        }
+
+        // --- COMPARE LOGIC ---
+        function toggleCompare(name) {
+            if (compareIds.has(name)) {
+                compareIds.delete(name);
+            } else {
+                if (compareIds.size >= 2) {
+                    const first = compareIds.values().next().value;
+                    compareIds.delete(first);
+                }
+                compareIds.add(name);
+            }
+            renderApp();
+            updateCompareBar();
+        }
+
+        function clearCompare() {
+            compareIds.clear();
+            renderApp();
+            updateCompareBar();
+        }
+
+        function updateCompareBar() {
+            const bar = document.getElementById('compare-bar');
+            const slot1 = document.getElementById('slot-1');
+            const slot2 = document.getElementById('slot-2');
+            const btn = document.getElementById('btn-compare-action');
+            
+            // Visual Slots Logic
+            if (compareIds.size >= 1) slot1.classList.add('filled');
+            else slot1.classList.remove('filled');
+            
+            if (compareIds.size >= 2) slot2.classList.add('filled');
+            else slot2.classList.remove('filled');
+
+            // Button State
+            if (compareIds.size === 2) {
+                btn.disabled = false;
+                btn.classList.add('ready');
+            } else {
+                btn.disabled = true;
+                btn.classList.remove('ready');
+            }
+            
+            // Show/Hide Bar
+            if (compareIds.size > 0) {
+                bar.classList.remove('hidden');
+                setTimeout(() => {
+                    bar.classList.remove('translate-y-24', 'opacity-0');
+                }, 10);
+            } else {
+                bar.classList.add('translate-y-24', 'opacity-0');
+                setTimeout(() => bar.classList.add('hidden'), 300);
+            }
+        }
+
+        function getCarFilter(brand) {
+            // Base emoji 🏎️ is Red
+            switch(brand) {
+                case 'Ferrari': return 'hue-rotate(0deg)';
+                case 'Lamborghini': return 'hue-rotate(70deg) brightness(1.2)'; // Lime-ish
+                case 'Bugatti': return 'hue-rotate(230deg)'; // Blue
+                case 'Pagani': return 'hue-rotate(280deg)'; // Purple
+                case 'Koenigsegg': return 'hue-rotate(50deg) brightness(1.5)'; // Yellow/Gold
+                default: return 'grayscale(1)';
+            }
+        }
+
+        function openCompareModal() {
+            if (compareIds.size !== 2) return;
+            
+            const selectedNames = Array.from(compareIds);
+            const c1 = products.find(p => p.name === selectedNames[0]);
+            const c2 = products.find(p => p.name === selectedNames[1]);
+            
+            const modal = document.getElementById('compare-modal');
+            const content = document.getElementById('compare-content');
+
+            const win = (val1, val2, lowIsGood = false) => {
+                const v1 = parseFloat(val1);
+                const v2 = parseFloat(val2);
+                if (v1 === v2) return '';
+                if (lowIsGood) return v1 < v2 ? 'text-emerald-500 font-bold' : 'text-red-500 opacity-60';
+                return v1 > v2 ? 'text-emerald-500 font-bold' : 'text-red-500 opacity-60';
+            };
+
+            content.innerHTML = `
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-racing text-white">Head to Head</h2>
+                    <p class="text-gray-400 text-sm uppercase tracking-widest">Spec Showdown</p>
+                </div>
+
+                <!-- Drag Strip Simulation -->
+                <div class="glass p-4 rounded-xl mb-6 relative overflow-hidden bg-[#1a1a1a]">
+                    <div class="relative z-10">
+                        <div class="flex justify-between items-center mb-4">
+                             <h3 class="text-xs font-bold uppercase tracking-widest text-white flex items-center">
+                                <i class="fa-solid fa-flag-checkered mr-2 text-white"></i> 0-60 MPH SIM
+                             </h3>
+                             <button onclick="startDragRace()" class="bg-white text-black text-[10px] font-bold px-4 py-1.5 rounded hover:scale-105 transition-transform uppercase shadow-lg shadow-white/10">Replay Race</button>
+                        </div>
+                        
+                        <!-- Lane 1 -->
+                        <div class="flex items-center mb-2 w-full relative pl-8"> <!-- Added padding for trophy -->
+                             <!-- Winner Badge -->
+                             <div id="winner-1" class="absolute left-1 top-1/2 transform -translate-y-1/2 text-2xl opacity-0 scale-0 transition-all duration-500 z-20 drop-shadow-[0_0_10px_rgba(255,215,0,0.8)]">🏆</div>
+                             
+                             <!-- Label -->
+                             <div class="w-24 flex-shrink-0 flex flex-col justify-center text-right mr-3 relative z-10">
+                                <div class="text-[10px] font-bold text-gray-500 uppercase tracking-wider leading-none">${c1.brand}</div>
+                                <div class="text-xs font-bold text-white uppercase tracking-wide leading-none truncate">${c1.name}</div>
+                             </div>
+                             <!-- Track -->
+                             <div class="flex-grow relative h-10 border-b border-dashed border-white/10 flex items-center">
+                                 <div id="race-car-1" class="absolute left-0 text-3xl transition-none scale-x-[-1] origin-center" style="left: 0%; filter: ${getCarFilter(c1.brand)}">🏎️</div>
+                                 <div class="absolute right-0 h-full w-0.5 bg-emerald-500/50"></div>
+                             </div>
+                        </div>
+                        
+                        <!-- Lane 2 -->
+                        <div class="flex items-center w-full relative pl-8"> <!-- Added padding for trophy -->
+                             <!-- Winner Badge -->
+                             <div id="winner-2" class="absolute left-1 top-1/2 transform -translate-y-1/2 text-2xl opacity-0 scale-0 transition-all duration-500 z-20 drop-shadow-[0_0_10px_rgba(255,215,0,0.8)]">🏆</div>
+
+                             <!-- Label -->
+                             <div class="w-24 flex-shrink-0 flex flex-col justify-center text-right mr-3 relative z-10">
+                                <div class="text-[10px] font-bold text-gray-500 uppercase tracking-wider leading-none">${c2.brand}</div>
+                                <div class="text-xs font-bold text-white uppercase tracking-wide leading-none truncate">${c2.name}</div>
+                             </div>
+                             <!-- Track -->
+                             <div class="flex-grow relative h-10 border-b border-dashed border-white/10 flex items-center">
+                                 <div id="race-car-2" class="absolute left-0 text-3xl transition-none scale-x-[-1] origin-center" style="left: 0%; filter: ${getCarFilter(c2.brand)}">🏎️</div> 
+                                 <div class="absolute right-0 h-full w-0.5 bg-emerald-500/50"></div>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-3 gap-4 items-center mb-8">
+                    <div class="text-center">
+                        <div class="text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-1">${c1.brand}</div>
+                        <div class="text-xl md:text-3xl font-racing text-white mb-2">${c1.name}</div>
+                    </div>
+
+                    <div class="flex justify-center">
+                        <div class="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center font-bold text-white italic shadow-[0_0_20px_rgba(220,38,38,0.5)]">VS</div>
+                    </div>
+
+                    <div class="text-center">
+                        <div class="text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-1">${c2.brand}</div>
+                        <div class="text-xl md:text-3xl font-racing text-white mb-2">${c2.name}</div>
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="glass p-4 rounded-xl">
+                        <div class="flex justify-between text-xs text-gray-400 uppercase tracking-wider mb-2">
+                            <span>Horsepower</span>
+                            <span>Horsepower</span>
+                        </div>
+                        <div class="flex justify-between items-center text-xl font-mono text-white">
+                            <span class="${win(c1.hp, c2.hp)}">${c1.hp} hp</span>
+                            <div class="flex-grow mx-4 h-1.5 bg-gray-800 rounded-full overflow-hidden relative">
+                                <div class="absolute left-1/2 top-0 bottom-0 w-[1px] bg-white/20"></div>
+                                <div class="absolute right-1/2 h-full bg-blue-500" style="width: ${(c1.hp/2500)*50}%"></div>
+                                <div class="absolute left-1/2 h-full bg-red-500" style="width: ${(c2.hp/2500)*50}%"></div>
+                            </div>
+                            <span class="${win(c2.hp, c1.hp)}">${c2.hp} hp</span>
+                        </div>
+                    </div>
+
+                    <div class="glass p-4 rounded-xl">
+                        <div class="flex justify-between text-xs text-gray-400 uppercase tracking-wider mb-2">
+                            <span>0-60 MPH</span>
+                            <span>0-60 MPH</span>
+                        </div>
+                        <div class="flex justify-between items-center text-xl font-mono text-white">
+                            <span class="${win(c1.accel, c2.accel, true)}">${c1.accel}</span>
+                            <div class="flex-grow mx-4 text-center text-xs text-gray-600 font-bold">ACCELERATION</div>
+                            <span class="${win(c2.accel, c1.accel, true)}">${c2.accel}</span>
+                        </div>
+                    </div>
+
+                    <div class="glass p-4 rounded-xl">
+                        <div class="flex justify-between text-xs text-gray-400 uppercase tracking-wider mb-2">
+                            <span>Torque</span>
+                            <span>Torque</span>
+                        </div>
+                        <div class="flex justify-between items-center text-lg font-mono text-white">
+                            <span class="${win(parseFloat(c1.torque), parseFloat(c2.torque))}">${c1.torque}</span>
+                            <span class="text-xs text-gray-500">NEWTON METERS</span>
+                            <span class="${win(parseFloat(c2.torque), parseFloat(c1.torque))}">${c2.torque}</span>
+                        </div>
+                    </div>
+
+                    <div class="glass p-4 rounded-xl">
+                        <div class="flex justify-between text-xs text-gray-400 uppercase tracking-wider mb-2">
+                            <span>Weight</span>
+                            <span>Weight</span>
+                        </div>
+                        <div class="flex justify-between items-center text-lg font-mono text-white">
+                            <span class="${win(parseFloat(c1.weight), parseFloat(c2.weight), true)}">${c1.weight}</span>
+                            <span class="text-xs text-gray-500">DRY WEIGHT</span>
+                            <span class="${win(parseFloat(c2.weight), parseFloat(c1.weight), true)}">${c2.weight}</span>
+                        </div>
+                    </div>
+
+                    <div class="glass p-4 rounded-xl">
+                        <div class="flex justify-between text-xs text-gray-400 uppercase tracking-wider mb-2">
+                            <span>Engine</span>
+                            <span>Engine</span>
+                        </div>
+                        <div class="flex justify-between items-center text-lg font-bold text-white">
+                            <span>${c1.cyl}</span>
+                            <span class="text-xs text-gray-500">CYLINDERS</span>
+                            <span>${c2.cyl}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            modal.classList.remove('hidden');
+            setTimeout(() => modal.classList.remove('opacity-0'), 10);
+            
+            // Auto-start race after brief delay
+            setTimeout(() => {
+                startDragRace();
+            }, 500);
+        }
+
+        function startDragRace() {
+            if (compareIds.size !== 2) return;
+            const selectedNames = Array.from(compareIds);
+            const c1 = products.find(p => p.name === selectedNames[0]);
+            const c2 = products.find(p => p.name === selectedNames[1]);
+
+            // Reset
+            const r1 = document.getElementById('race-car-1');
+            const r2 = document.getElementById('race-car-2');
+            const w1 = document.getElementById('winner-1');
+            const w2 = document.getElementById('winner-2');
+            
+            r1.style.transition = 'none';
+            r2.style.transition = 'none';
+            r1.style.left = '0%';
+            r2.style.left = '0%';
+            
+            // Reset winners
+            if(w1) { w1.classList.add('opacity-0', 'scale-0'); w1.classList.remove('opacity-100', 'scale-100', 'animate-winner-bounce'); }
+            if(w2) { w2.classList.add('opacity-0', 'scale-0'); w2.classList.remove('opacity-100', 'scale-100', 'animate-winner-bounce'); }
+
+            // Parse accel times
+            const t1 = parseFloat(c1.accel);
+            const t2 = parseFloat(c2.accel);
+
+            // Force reflow
+            void r1.offsetWidth;
+
+            setTimeout(() => {
+                // Animate
+                r1.style.transition = `left ${t1}s cubic-bezier(0.25, 0.46, 0.45, 0.94)`; 
+                r2.style.transition = `left ${t2}s cubic-bezier(0.25, 0.46, 0.45, 0.94)`;
+                
+                r1.style.left = '90%'; // Finish line relative position
+                r2.style.left = '90%';
+                
+                // Winner Logic
+                const winningTime = Math.min(t1, t2);
+                
+                setTimeout(() => {
+                    if (t1 < t2) {
+                        w1.classList.remove('opacity-0', 'scale-0');
+                        w1.classList.add('opacity-100', 'scale-100', 'animate-winner-bounce');
+                    } else if (t2 < t1) {
+                        w2.classList.remove('opacity-0', 'scale-0');
+                        w2.classList.add('opacity-100', 'scale-100', 'animate-winner-bounce');
+                    } else {
+                        // Tie
+                        w1.classList.remove('opacity-0', 'scale-0');
+                        w1.classList.add('opacity-100', 'scale-100');
+                        w2.classList.remove('opacity-0', 'scale-0');
+                        w2.classList.add('opacity-100', 'scale-100');
+                    }
+                }, winningTime * 1000); 
+                
+            }, 100);
+        }
+
+        function closeCompareModal() {
+            const modal = document.getElementById('compare-modal');
+            modal.classList.add('opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                clearCompare(); // Auto-clear selection on close
+            }, 300);
         }
 
         // --- ENGINE ---
@@ -717,10 +1189,30 @@
             engineSelect.innerHTML = engHtml;
         }
 
+        // Helper: Counter Animation
+        function animateCounter(id, end, duration = 1500) {
+            const obj = document.getElementById(id);
+            if (!obj) return;
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                // Ease out expo
+                const ease = 1 - Math.pow(2, -10 * progress);
+                obj.innerText = Math.floor(ease * end);
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                } else {
+                    obj.innerText = end;
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
         function renderApp() {
             grid.innerHTML = '';
             
-            let total = 0, v12Plus = 0, active = 0;
+            let total = 0, v12Plus = 0, active = 0, totalAccel = 0;
             const uniqueBrands = new Set();
             const today = new Date();
 
@@ -732,19 +1224,30 @@
                 return true;
             });
 
-            filtered.forEach(p => {
+            filtered.forEach((p, index) => {
                 total++;
+                totalAccel += parseFloat(p.accel);
                 uniqueBrands.add(p.brand);
                 if (['V12', 'V16', 'W16'].includes(p.cyl)) v12Plus++;
                 if (!p.eol) active++;
                 
                 const status = getStatus(p.eol);
+                const isCompared = compareIds.has(p.name);
 
                 const card = document.createElement('div');
-                card.className = `${getBrandClass(p.brand)} glass p-5 rounded-xl card-hover group relative overflow-hidden flex flex-col justify-between min-h-[280px]`;
+                // Added animate-intro and delay for staggered effect
+                card.className = `${getBrandClass(p.brand)} glass p-5 rounded-xl card-hover group relative overflow-hidden flex flex-col justify-between min-h-[280px] ${isCompared ? 'ring-2 ring-emerald-400' : ''} ${isInitialLoad ? 'animate-intro' : ''}`;
+                
+                if (isInitialLoad) {
+                    card.style.animationDelay = `${index * 50}ms`;
+                    // Automatically remove the intro class once animation is done
+                    card.addEventListener('animationend', () => {
+                        card.classList.remove('animate-intro');
+                    }, { once: true });
+                }
                 
                 card.onclick = (e) => {
-                    if(!e.target.closest('a') && !e.target.closest('button')) window.open(p.url, '_blank');
+                    if(!e.target.closest('a') && !e.target.closest('button') && !e.target.closest('label') && !e.target.closest('input')) window.open(p.url, '_blank');
                 };
                 card.style.cursor = 'pointer';
 
@@ -769,25 +1272,25 @@
                             <span class="badge ${status.class} backdrop-blur-md shadow-sm">${status.label}</span>
                             <button class="btn-start w-10 h-10 rounded-full border border-current opacity-60 hover:opacity-100 flex items-center justify-center transition-all hover:bg-white/20 shadow-lg" 
                                     onclick="playEngineSound(this, '${p.cyl}')" title="Start Engine">
-                                <i class="fa-solid fa-power-off text-sm"></i>
+                                <i class="fa-solid fa-key text-sm"></i>
                             </button>
                         </div>
                     </div>
                     
                     <div class="flex justify-around items-end mb-6 relative z-10 px-2">
-                        <!-- HP Gauge -->
+                        <!-- HP Gauge (Audio Reactive) -->
                         <div class="flex flex-col items-center">
                             <div class="relative w-20 h-20 flex items-center justify-center">
-                                <svg class="w-full h-full transform -rotate-90">
+                                <svg class="w-full h-full transform -rotate-90 overflow-visible">
                                     <circle cx="40" cy="40" r="${r}" class="circle-bg" />
                                     <circle cx="40" cy="40" r="${r}" stroke="currentColor" stroke-width="3" fill="transparent" 
                                             stroke-dasharray="${c}" stroke-dashoffset="${c}" 
                                             data-offset="${hpOffset}"
-                                            class="hp-circle transition-all duration-1000 ease-out" 
+                                            class="hp-circle audio-glow transition-all duration-1000 ease-out" 
                                             style="stroke-linecap: round;" />
                                 </svg>
                                 <div class="absolute inset-0 flex items-center justify-center">
-                                   <span class="text-lg font-bold font-racing">${p.hp}</span>
+                                   <span class="text-lg font-bold font-racing" style="color: var(--brand-color)">${p.hp}</span>
                                 </div>
                             </div>
                             <span class="text-[10px] font-bold uppercase tracking-widest mt-1 opacity-70">HP</span>
@@ -805,7 +1308,7 @@
                                             style="stroke-linecap: round;" />
                                 </svg>
                                 <div class="absolute inset-0 flex items-center justify-center">
-                                   <span class="text-lg font-bold font-racing">${p.accel}</span>
+                                   <span class="text-lg font-bold font-racing" style="color: var(--brand-color)">${p.accel}</span>
                                 </div>
                             </div>
                             <span class="text-[10px] font-bold uppercase tracking-widest mt-1 opacity-70">0-60</span>
@@ -827,9 +1330,19 @@
                         <div class="w-full bg-black/10 dark:bg-white/10 h-1 rounded-full mb-3 overflow-hidden">
                              <div class="lifecycle-fill ${!p.eol ? 'bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.5)]' : 'bg-gray-500 opacity-50'}" style="width: 100%"></div>
                         </div>
-                        <div class="flex justify-between items-center text-xs opacity-60 group-hover:opacity-100 transition-opacity">
-                            <span class="uppercase tracking-wider font-bold text-[9px]">${p.cat}</span>
-                            <span class="flex items-center gap-1 font-bold">SPEC SHEET <i class="fa-solid fa-arrow-right text-[9px]"></i></span>
+                        <div class="flex justify-between items-end">
+                            <div class="flex flex-col">
+                                <span class="uppercase tracking-wider font-bold text-[9px] opacity-60 mb-1">${p.cat}</span>
+                                <!-- Compare Checkbox -->
+                                <label class="custom-checkbox flex items-center gap-2 cursor-pointer group/chk">
+                                    <input type="checkbox" class="hidden" onchange="toggleCompare('${p.name}')" ${isCompared ? 'checked' : ''} ${!isCompared && compareIds.size >= 2 ? 'disabled' : ''}>
+                                    <div class="w-4 h-4 border border-gray-400 rounded flex items-center justify-center transition-colors">
+                                        <svg class="w-2.5 h-2.5 text-white hidden pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                                    </div>
+                                    <span class="text-[9px] font-bold uppercase tracking-widest opacity-60 group-hover/chk:opacity-100 transition-opacity">Compare</span>
+                                </label>
+                            </div>
+                            <span class="flex items-center gap-1 font-bold text-xs opacity-60 group-hover:opacity-100 transition-opacity">SPEC SHEET <i class="fa-solid fa-arrow-right text-[9px]"></i></span>
                         </div>
                     </div>
                 `;
@@ -843,10 +1356,65 @@
                 }, 100);
             });
 
-            document.getElementById('stat-total').innerText = total;
-            document.getElementById('stat-v12').innerText = v12Plus;
-            document.getElementById('stat-active').innerText = active;
-            document.getElementById('stat-brands').innerText = uniqueBrands.size;
+            // Calculate Average 0-60
+            const avgAccel = total > 0 ? (totalAccel / total).toFixed(2) : "0.00";
+
+            // Determine brand color for dynamic elements
+            let activeColor = brandColors[currentBrand] || brandColors['all'];
+            
+            // Special handling for 'all' to ensure it's not colored
+            if (currentBrand === 'all') {
+                activeColor = ''; // Reset to class defaults (which we will handle)
+            }
+
+            // Update Total Models Card
+            const totalCard = document.getElementById('card-total');
+            const totalIcon = document.getElementById('stat-total-icon');
+            
+            if(totalCard && totalIcon) {
+                if(currentBrand === 'all') {
+                    // Maroon
+                    totalIcon.style.filter = 'brightness(0.6) saturate(1.5) hue-rotate(-20deg)'; // Adjust to get Maroon from Red emoji
+                    totalCard.style.borderLeftColor = '#800000'; 
+                } else {
+                    totalIcon.style.filter = getCarFilter(currentBrand);
+                    totalCard.style.borderLeftColor = activeColor;
+                }
+            }
+
+            // Update Avg 0-60 Card
+            const avgCard = document.getElementById('card-avg');
+            const avgIcon = document.getElementById('stat-avg-icon');
+            const avgVal = document.getElementById('stat-avg-value-container');
+
+            if(avgCard && avgIcon && avgVal) {
+                if(currentBrand === 'all') {
+                    avgCard.style.borderLeftColor = '#800000'; // Maroon
+                    avgIcon.style.color = '#800000'; // Maroon
+                    avgVal.classList.remove('text-blue-500', 'dark:text-blue-400');
+                    avgVal.style.color = '#800000'; // Explicit color override
+                } else {
+                    avgCard.style.borderLeftColor = activeColor;
+                    avgIcon.style.color = activeColor;
+                    avgVal.style.color = activeColor;
+                    // Remove default classes to let style take precedence or just overwrite
+                    avgVal.classList.remove('text-blue-500', 'dark:text-blue-400');
+                }
+            }
+
+            // Animate Stats if Initial Load
+            if (isInitialLoad) {
+                animateCounter('stat-total', total);
+                animateCounter('stat-v12', v12Plus);
+                animateCounter('stat-active', active);
+                document.getElementById('stat-avg-accel').innerText = avgAccel;
+                isInitialLoad = false;
+            } else {
+                document.getElementById('stat-total').innerText = total;
+                document.getElementById('stat-v12').innerText = v12Plus;
+                document.getElementById('stat-active').innerText = active;
+                document.getElementById('stat-avg-accel').innerText = avgAccel;
+            }
         }
 
         function filterBrand(brand) {
